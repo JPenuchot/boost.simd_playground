@@ -13,5 +13,5 @@ Roadmap
 - [ ] jp::dot_gmv
 - [ ] Behcnmark for jp::dot_gmv
 
-- [ ] jp::got_gmm
-- [ ] Behcnmark for jp::got_gmm
+- [ ] jp::dot_gmm
+- [ ] Behcnmark for jp::dot_gmm
