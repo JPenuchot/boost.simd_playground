@@ -57,6 +57,8 @@ namespace jp { namespace algebra {
 				) {
 		namespace bs = boost::simd;
 
+		//	TODO : fix that s!@#
+
 		bs::pack<T> p_res{0};
 		T s_res = 0;
 
