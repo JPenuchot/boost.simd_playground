@@ -69,7 +69,7 @@ namespace jp { namespace algebra {
 		}
 
 		//	Scalar segment
-		BOOST_FOREACH(boots::tie(a, b), boost::combine(std::get<2>(a_alr), std::get<2>(b_alr))){
+		BOOST_FOREACH(boost::tie(a, b), boost::combine(std::get<2>(a_alr), std::get<2>(b_alr))){
 			s_res += bs::dot(a, b);
 		}
 
