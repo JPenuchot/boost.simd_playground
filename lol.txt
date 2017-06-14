@@ -1,0 +1,107 @@
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jpenuchot/usr/devel/cpp/boostexpe/.build
+[ 50%] Building CXX object CMakeFiles/prog.dir/src/main.cpp.o
+In file included from /home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:5:0:
+/home/jpenuchot/usr/devel/cpp/boostexpe/include/algebra/dot.hpp: In instantiation of ‘T jp::algebra::dot_auto(jp::pvector<T, N>&, jp::pvector<T, N>&) [with T = float; long unsigned int N = 3]’:
+/home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:14:34:   required from here
+/home/jpenuchot/usr/devel/cpp/boostexpe/include/algebra/dot.hpp:66:20: error: no type named ‘value_type’ in ‘struct std::iterator_traits<float>’
+   auto a_alr = bs::segmented_aligned_range_t<T>(a);
+                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/jpenuchot/usr/devel/cpp/boostexpe/include/algebra/dot.hpp:67:20: error: no type named ‘value_type’ in ‘struct std::iterator_traits<float>’
+   auto b_alr = bs::segmented_aligned_range_t<T>(b);
+                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/jpenuchot/usr/devel/cpp/boostexpe/include/algebra/dot.hpp:71:20: error: no match for call to ‘(const boost::dispatch::functor<boost::simd::tag::dot_>) (jp::pvector<float, 3>&, jp::pvector<float, 3>&)’
+    p_res += bs::dot(a, b);
+             ~~~~~~~^~~~~~
+In file included from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/make_callable.hpp:18:0,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/definition/aligned_load.hpp:17,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/scalar/aligned_load.hpp:13,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/aligned_load.hpp:40,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/pack.hpp:25,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:1:
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp:72:10: note: candidate: template<class ... Args> decltype (Tag:: dispatch_to(declval<Site>(), (declval<typename boost::dispatch::hierarchy_of<Args, Args>::type>)()...)((forward<Args>)(boost::dispatch::functor::operator()::args)...)) boost::dispatch::functor<Tag, Site>::operator()(Args&& ...) const [with Args = {Args ...}; Tag = boost::simd::tag::dot_; Site = boost::simd::sse4_2_]
+     auto operator()(Args&&... args) const
+          ^~~~~~~~
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp:72:10: note:   template argument deduction/substitution failed:
+In file included from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/make_callable.hpp:18:0,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/definition/aligned_load.hpp:17,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/scalar/aligned_load.hpp:13,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/aligned_load.hpp:40,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/pack.hpp:25,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:1:
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp: In substitution of ‘template<class ... Args> decltype (boost::simd::tag::dot_::dispatch_to(declval<boost::simd::sse4_2_>(), (declval<typename boost::dispatch::hierarchy_of<Args, Args>::type>)()...)((forward<Args>)(boost::dispatch::functor::operator()::args)...)) boost::dispatch::functor<boost::simd::tag::dot_>::operator()<Args ...>(Args&& ...) const [with Args = {jp::pvector<float, 3>&, jp::pvector<float, 3>&}]’:
+/home/jpenuchot/usr/devel/cpp/boostexpe/include/algebra/dot.hpp:71:20:   required from ‘T jp::algebra::dot_auto(jp::pvector<T, N>&, jp::pvector<T, N>&) [with T = float; long unsigned int N = 3]’
+/home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:14:34:   required from here
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp:24:17: error: use of ‘static decltype(auto) boost::simd::tag::dot_::dispatch_to(Args&& ...) [with Args = {boost::simd::sse4_2_, boost::dispatch::scalar_<boost::dispatch::unspecified_<jp::pvector<float, 3> > >, boost::dispatch::scalar_<boost::dispatch::unspecified_<jp::pvector<float, 3> > >}]’ before deduction of ‘auto’
+ TAG::dispatch_to( boost::dispatch::detail::declval<SITE>()                                          \
+                 ^
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp:74:22: note: in expansion of macro ‘BOOST_DISPATCH_IMPL_TAG_CALL_TYPE’
+         -> decltype (BOOST_DISPATCH_IMPL_TAG_CALL_TYPE(Tag,Site,Args,args))
+                      ^
+In file included from /home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:5:0:
+/home/jpenuchot/usr/devel/cpp/boostexpe/include/algebra/dot.hpp: In instantiation of ‘T jp::algebra::dot_auto(jp::pvector<T, N>&, jp::pvector<T, N>&) [with T = float; long unsigned int N = 3]’:
+/home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:14:34:   required from here
+/home/jpenuchot/usr/devel/cpp/boostexpe/include/algebra/dot.hpp:76:20: error: no match for call to ‘(const boost::dispatch::functor<boost::simd::tag::dot_>) (jp::pvector<float, 3>&, jp::pvector<float, 3>&)’
+    s_res += bs::dot(a, b);
+             ~~~~~~~^~~~~~
+In file included from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/make_callable.hpp:18:0,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/definition/aligned_load.hpp:17,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/scalar/aligned_load.hpp:13,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/aligned_load.hpp:40,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/pack.hpp:25,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:1:
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp:72:10: note: candidate: template<class ... Args> decltype (Tag:: dispatch_to(declval<Site>(), (declval<typename boost::dispatch::hierarchy_of<Args, Args>::type>)()...)((forward<Args>)(boost::dispatch::functor::operator()::args)...)) boost::dispatch::functor<Tag, Site>::operator()(Args&& ...) const [with Args = {Args ...}; Tag = boost::simd::tag::dot_; Site = boost::simd::sse4_2_]
+     auto operator()(Args&&... args) const
+          ^~~~~~~~
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp:72:10: note:   template argument deduction/substitution failed:
+In file included from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/make_callable.hpp:18:0,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/definition/aligned_load.hpp:17,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/scalar/aligned_load.hpp:13,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/aligned_load.hpp:40,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/pack.hpp:25,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:1:
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp: In substitution of ‘template<class ... Args> decltype (boost::simd::tag::dot_::dispatch_to(declval<boost::simd::sse4_2_>(), (declval<typename boost::dispatch::hierarchy_of<Args, Args>::type>)()...)((forward<Args>)(boost::dispatch::functor::operator()::args)...)) boost::dispatch::functor<boost::simd::tag::dot_>::operator()<Args ...>(Args&& ...) const [with Args = {jp::pvector<float, 3>&, jp::pvector<float, 3>&}]’:
+/home/jpenuchot/usr/devel/cpp/boostexpe/include/algebra/dot.hpp:76:20:   required from ‘T jp::algebra::dot_auto(jp::pvector<T, N>&, jp::pvector<T, N>&) [with T = float; long unsigned int N = 3]’
+/home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:14:34:   required from here
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp:24:17: error: use of ‘static decltype(auto) boost::simd::tag::dot_::dispatch_to(Args&& ...) [with Args = {boost::simd::sse4_2_, boost::dispatch::scalar_<boost::dispatch::unspecified_<jp::pvector<float, 3> > >, boost::dispatch::scalar_<boost::dispatch::unspecified_<jp::pvector<float, 3> > >}]’ before deduction of ‘auto’
+ TAG::dispatch_to( boost::dispatch::detail::declval<SITE>()                                          \
+                 ^
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp:74:22: note: in expansion of macro ‘BOOST_DISPATCH_IMPL_TAG_CALL_TYPE’
+         -> decltype (BOOST_DISPATCH_IMPL_TAG_CALL_TYPE(Tag,Site,Args,args))
+                      ^
+In file included from /home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:5:0:
+/home/jpenuchot/usr/devel/cpp/boostexpe/include/algebra/dot.hpp: In instantiation of ‘T jp::algebra::dot_auto(jp::pvector<T, N>&, jp::pvector<T, N>&) [with T = float; long unsigned int N = 3]’:
+/home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:14:34:   required from here
+/home/jpenuchot/usr/devel/cpp/boostexpe/include/algebra/dot.hpp:79:17: error: no match for call to ‘(const boost::dispatch::functor<boost::simd::tag::sum_>) (boost::simd::pack<float, 4, boost::simd::sse_>&)’
+   return bs::sum(p_res) + s_res;
+          ~~~~~~~^~~~~~~
+In file included from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/make_callable.hpp:18:0,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/definition/aligned_load.hpp:17,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/scalar/aligned_load.hpp:13,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/aligned_load.hpp:40,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/pack.hpp:25,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:1:
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp:72:10: note: candidate: template<class ... Args> decltype (Tag:: dispatch_to(declval<Site>(), (declval<typename boost::dispatch::hierarchy_of<Args, Args>::type>)()...)((forward<Args>)(boost::dispatch::functor::operator()::args)...)) boost::dispatch::functor<Tag, Site>::operator()(Args&& ...) const [with Args = {Args ...}; Tag = boost::simd::tag::sum_; Site = boost::simd::sse4_2_]
+     auto operator()(Args&&... args) const
+          ^~~~~~~~
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp:72:10: note:   template argument deduction/substitution failed:
+In file included from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/make_callable.hpp:18:0,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/definition/aligned_load.hpp:17,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/scalar/aligned_load.hpp:13,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/function/aligned_load.hpp:40,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/pack.hpp:25,
+                 from /home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:1:
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp: In substitution of ‘template<class ... Args> decltype (boost::simd::tag::sum_::dispatch_to(declval<boost::simd::sse4_2_>(), (declval<typename boost::dispatch::hierarchy_of<Args, Args>::type>)()...)((forward<Args>)(boost::dispatch::functor::operator()::args)...)) boost::dispatch::functor<boost::simd::tag::sum_>::operator()<Args ...>(Args&& ...) const [with Args = {boost::simd::pack<float, 4, boost::simd::sse_>&}]’:
+/home/jpenuchot/usr/devel/cpp/boostexpe/include/algebra/dot.hpp:79:17:   required from ‘T jp::algebra::dot_auto(jp::pvector<T, N>&, jp::pvector<T, N>&) [with T = float; long unsigned int N = 3]’
+/home/jpenuchot/usr/devel/cpp/boostexpe/src/main.cpp:14:34:   required from here
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp:24:17: error: use of ‘static decltype(auto) boost::simd::tag::sum_::dispatch_to(Args&& ...) [with Args = {boost::simd::sse4_2_, boost::simd::pack_<boost::dispatch::single_<boost::simd::pack<float, 4, boost::simd::sse_> >, boost::simd::sse_>}]’ before deduction of ‘auto’
+ TAG::dispatch_to( boost::dispatch::detail::declval<SITE>()                                          \
+                 ^
+/home/jpenuchot/usr/devel/cpp/boostexpe/boost.simd/include/boost/simd/detail/dispatch/function/functor.hpp:74:22: note: in expansion of macro ‘BOOST_DISPATCH_IMPL_TAG_CALL_TYPE’
+         -> decltype (BOOST_DISPATCH_IMPL_TAG_CALL_TYPE(Tag,Site,Args,args))
+                      ^
+make[2]: *** [CMakeFiles/prog.dir/build.make:63: CMakeFiles/prog.dir/src/main.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:68: CMakeFiles/prog.dir/all] Error 2
+make: *** [Makefile:84: all] Error 2
+mv: cannot stat 'prog': No such file or directory
