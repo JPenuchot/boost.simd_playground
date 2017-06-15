@@ -38,9 +38,7 @@ foreach(BARCH ${BENCH_ARCHS})
 	foreach(BTYPE ${BENCH_TYPES})
 		
 		set(TNAME "prog.${BARCH}_${BTYPE}")
-
-		message("Building : ${TNAME}")
-
+		
 		add_executable(${TNAME} ${SOURCES})
 		
 		target_link_libraries(${TNAME} "benchmark" "pthread")
