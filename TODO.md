@@ -10,8 +10,8 @@ Roadmap
 - [ ] jp::dot_simd
 - [ ] Behcnmark for jp::dot_simd
 
-- [ ] jp::dot_gmv
-- [ ] Behcnmark for jp::dot_gmv
+- [ ] jp::dot_gemv
+- [ ] Behcnmark for jp::dot_gemv
 
-- [ ] jp::dot_gmm
-- [ ] Behcnmark for jp::dot_gmm
+- [ ] jp::dot_gemm
+- [ ] Behcnmark for jp::dot_gemm

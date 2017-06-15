@@ -1,3 +1,5 @@
+#pragma once
+
 #include <boost/range/combine.hpp>
 #include <boost/foreach.hpp>
 
@@ -7,6 +9,8 @@
 #include "../pvector.hpp"
 
 namespace jp { namespace algebra {
+	namespace bs = boost::simd;
+
 	/**
 	 * @brief      Computes the dot product of a and b the dumb way.
 	 *
@@ -55,7 +59,6 @@ namespace jp { namespace algebra {
 	T dot_auto	( pvector<T, N>& a
 				, pvector<T, N>& b
 				) {
-		namespace bs = boost::simd;
 
 		//	TODO : fix that s!@#
 
@@ -95,6 +98,29 @@ namespace jp { namespace algebra {
 	T dot_simd	( pvector<T, N>& a
 				, pvector<T, N>& b
 				) {
+		bs::pack<T> resp{0};
+		T res = 0;
 
+		bs::pack<T> ap{0};
+		bs::pack<T> bp{0};
+
+		T* a_ptr = a.data.data();
+		T* b_ptr = b.data.data();
+
+		T* a_end = a.data.data.size_t();
+		T* a_aligned_end = a_end - (a_end % res.size_t());
+
+		//	SIMD
+		for(; a_ptr < a_aligned_end; a_ptr += res.size_t(), b_ptr += res.size_t()){
+			bs::aligned_load<T>(a_ptr, ap);
+			bs::aligned_load<T>(a_ptr, ap);
+
+			resp += bs::dot(ap, bp);
+		}
+
+		//	Scalar
+		for(; a_ptr < a_end; a_ptr += sizeof(T), b_ptr(sizeof(T))){ res += *a_ptr * *b_ptr; }
+
+		return bs::sum(resp) + res;
 	}
 } }
