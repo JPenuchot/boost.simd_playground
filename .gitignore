@@ -60,3 +60,7 @@ CTestTestfile.cmake
 *.exe
 *.out
 *.app
+
+# Assembly
+
+*.asm
