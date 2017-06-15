@@ -4,6 +4,7 @@
 
 #include <boost/array.hpp>
 #include <boost/simd/memory/allocator.hpp>
+#include <boost/simd/pack.hpp>
 
 #include <iterator>
 #include <algorithm>
@@ -19,7 +20,7 @@ namespace jp {
 		public:
 			constexpr std::size_t getSize(){ return N; }
 			
-			alignas(16) std::array<T,N> data;
+			alignas(boost::simd::pack<T>::alignment) std::array<T,N> data;
 	};
 
 	/**

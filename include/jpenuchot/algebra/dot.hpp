@@ -111,11 +111,13 @@ namespace jp { namespace algebra {
 	T dot_simd	( pvector<T, N>& a
 				, pvector<T, N>& b
 				) {
-		//	Template error happening here...
-
 		using pack_t = bs::pack<T>;
 
-		pack_t resp{0};
+		pack_t resp0{0};
+		pack_t resp1{0};
+		pack_t resp2{0};
+		pack_t resp3{0};
+
 		T ress = 0;
 
 		T* a_ptr = a.data.data();
@@ -123,19 +125,37 @@ namespace jp { namespace algebra {
 
 		T* a_end = a_ptr + a.data.size();
 
-		//	SIMD
-		for(; a_ptr + pack_t::static_size <= a_end; a_ptr+= pack_t::static_size, b_ptr+= pack_t::static_size){
-			pack_t pa = bs::load<pack_t>(a_ptr);
-			pack_t pb = bs::load<pack_t>(b_ptr);
+		constexpr auto sz = pack_t::static_size;
 
-			resp += pa * pb;
+		//	SIMD
+		for(; a_ptr + (pack_t::static_size * 4) <= a_end; a_ptr+= pack_t::static_size * 4, b_ptr+= pack_t::static_size * 4){
+			pack_t pa0(a_ptr);
+			pack_t pb0(b_ptr);
+
+			pack_t pa1(&a_ptr[sz]);
+			pack_t pb1(&b_ptr[sz]);
+
+			pack_t pa2(&a_ptr[2 * sz]);
+			pack_t pb2(&b_ptr[2 * sz]);
+
+			pack_t pa3(&a_ptr[3 * sz]);
+			pack_t pb3(&b_ptr[3 * sz]);
+
+			resp0 += pa0 * pb0;
+			resp1 += pa1 * pb1;
+			resp2 += pa2 * pb2;
+			resp3 += pa3 * pb3;
 		}
+
+		resp0 += resp1;
+		resp2 += resp3;
+		resp0 += resp2;
 
 		//	Scalar
 		for(; a_ptr < a_end; a_ptr++, b_ptr++){
 			ress += (*a_ptr) * (*b_ptr);
 		}
 
-		return bs::sum(resp) + ress;
+		return bs::sum(resp0) + ress;
 	}
 } }
