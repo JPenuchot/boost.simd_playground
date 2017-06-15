@@ -1,0 +1,30 @@
+#!/bin/bash
+
+cd .build
+cmake ..
+make
+mv prog* ..
+
+cd ..
+
+echo
+
+echo "-= Benchmark : avx_float =-"
+echo
+echo
+./prog.avx_float		--benchmark_repetitions=10 --benchmark_report_aggregates_only=true
+
+echo "-= Benchmark : sse42_float =-"
+echo
+echo
+./prog.sse42_float		--benchmark_repetitions=10 --benchmark_report_aggregates_only=true
+
+echo "-= Benchmark : avx_double =-"
+echo
+echo
+./prog.avx_double		--benchmark_repetitions=10 --benchmark_report_aggregates_only=true
+
+echo "-= Benchmark : sse4_2_double =-"
+echo
+echo
+./prog.sse4_2_double	--benchmark_repetitions=10 --benchmark_report_aggregates_only=true

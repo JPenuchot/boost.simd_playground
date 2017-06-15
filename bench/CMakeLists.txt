@@ -5,7 +5,7 @@ project(Bench)
 
 #	Adding compiler optimizations
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 --std=c++14 -msse4.2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 --std=c++14 -DNDEBUG")
 
 #	Ckecking for packages
 
@@ -24,4 +24,16 @@ link_libraries("benchmark" "pthread")
 
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
-add_executable(prog ${SOURCES})
+add_executable(prog.avx_float ${SOURCES})
+add_executable(prog.sse42_float ${SOURCES})
+add_executable(prog.avx_double ${SOURCES})
+add_executable(prog.sse4_2_double ${SOURCES})
+
+SET_TARGET_PROPERTIES(prog.avx_float PROPERTIES
+	COMPILE_FLAGS " -mavx  -DBENCH_TYPE=float")
+SET_TARGET_PROPERTIES(prog.sse42_float PROPERTIES
+	COMPILE_FLAGS " -msse4.2  -DBENCH_TYPE=float")
+SET_TARGET_PROPERTIES(prog.avx_double PROPERTIES
+	COMPILE_FLAGS " -mavx  -DBENCH_TYPE=double")
+SET_TARGET_PROPERTIES(prog.sse4_2_double PROPERTIES
+	COMPILE_FLAGS " -msse4.2  -DBENCH_TYPE=double")
