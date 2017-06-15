@@ -16,8 +16,7 @@ namespace jp {
 			, std::size_t N
 			>
 	class pvector {
-		static_assert(std::is_fundamental<T>::value,
-			"Type must be fundamental.");
+		//static_assert(std::is_fundamental<T>::value, "Type must be fundamental.");
 
 		public:
 			constexpr std::size_t getSize(){ return N; }
