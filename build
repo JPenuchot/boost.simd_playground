@@ -2,4 +2,7 @@
 cd .build
 cmake ..
 make
+objdump -dC prog > prog.asm
+
 mv prog ..
+mv prog.asm ..
