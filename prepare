@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo 
+
+echo -n "WARNING : This will install Google Benchmark in your /usr/local/lib folder, are you sure you want to continue ? [y/n] : "
+read ANS
+
+while [ ! "$ANS" -eq 'y' ] || [ ! "$ANS" -eq 'n' ]; do
+	echo
+	echo -n "[y/n] : "
+done
+
+if [ "$ANS" -eq 'n' ]; then
+	exit
+fi
+
+echo
+
+
+# boost.simd
+git clone https://github.com/numscale/boost.simd
+
+# boost 1.64.0
+
+wget https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.gz
+tar xf boost_1_64_0.tar.gz
+rm boost_1_64_0.tar.gz
+
+# gbenchmark
+
+git clone https://github.com/google/benchmark
+cd benchmark
+
+sudo make install
+cd ..
