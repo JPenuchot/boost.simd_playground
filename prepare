@@ -5,12 +5,13 @@ echo
 echo -n "WARNING : This will install Google Benchmark in your /usr/local/lib folder, are you sure you want to continue ? [y/n] : "
 read ANS
 
-while [ ! "$ANS" -eq 'y' ] || [ ! "$ANS" -eq 'n' ]; do
+while [ ! "$ANS" = 'y' ] || [ ! "$ANS" = 'n' ]; do
 	echo
 	echo -n "[y/n] : "
+	read ANS
 done
 
-if [ "$ANS" -eq 'n' ]; then
+if [ "$ANS" = 'n' ]; then
 	exit
 fi
 
