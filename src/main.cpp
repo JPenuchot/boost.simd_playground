@@ -13,7 +13,7 @@ int main(){
 
 	auto x = jp::algebra::dot_dumb(pvec, pvec);
 	std::cout << x << '\n';
-	auto y = jp::algebra::dot_simd(pvec, pvec);
+	auto y = jp::algebra::dot_simd_1_unroll(pvec, pvec);
 	std::cout << y << '\n';
 
 //	std::cout	<< jp::algebra::dot_dumb(pvec, pvec) << '\n'
