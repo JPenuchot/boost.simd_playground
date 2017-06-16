@@ -26,19 +26,19 @@ fi
 
 ## Build everything
 
+./build ${CMAKE_BUILD_DIR} ${BIN_DIR}
+
+## Run benchmarks
+
 echo
 echo "-= IT'S BENCH TIME =-"
 echo
 
-./build ${CMAKE_BUILD_DIR} ${OUTPUT_DIR}
-
-## Run benchmarks
-
-echo ${BIN_DIR}
-ls ${ORIGIN}/${BIN_DIR}
-
 EXEC_LIST=$(ls ${ORIGIN}/${BIN_DIR})
 
+echo
+
 for BENCH_EXEC in ${EXEC_LIST}; do
-	${BIN_DIR}/${BENCH_EXEC} --benchmark_repetitions=10 --benchmark_report_aggregates_only=true --benchmark_format=json --benchmark_out=${ORIGIN}/${OUTPUT_DIR}/${BENCH_EXEC}_report.json
+	echo "Running ${BENCH_EXEC}..."
+	${BIN_DIR}/${BENCH_EXEC} --benchmark_repetitions=10 --benchmark_report_aggregates_only=true --benchmark_format=json --benchmark_out=${ORIGIN}/${BIN_DIR}/${BENCH_EXEC}_report.json &> /dev/null
 done

@@ -38,4 +38,4 @@ echo
 
 cmake ${ORIGIN}
 make
-mv prog* ${ORIGIN}/${OUTPUT_DIR}
+mv bench* ${ORIGIN}/${OUTPUT_DIR}

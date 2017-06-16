@@ -18,7 +18,7 @@ set(BENCH_TYPES
 	"float"
 	"double"
 	"int"
-	"char"
+	#"char"
 )
 
 #	Ckecking for packages
@@ -43,7 +43,7 @@ foreach(BARCH ${BENCH_ARCHS})
 # Iterating over types
 foreach(BTYPE ${BENCH_TYPES})
 
-	set(TNAME "prog_${BARCH}_${BTYPE}")
+	set(TNAME "bench_${BARCH}_${BTYPE}")
 	add_executable(${TNAME} ${SOURCES})
 	set_target_properties(${TNAME}
 		PROPERTIES COMPILE_FLAGS " -m${BARCH} -DBENCH_TYPE=${BTYPE}")
