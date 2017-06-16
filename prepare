@@ -5,7 +5,7 @@ echo
 echo -n "WARNING : This will install Google Benchmark in your /usr/local/lib folder, are you sure you want to continue ? [y/n] : "
 read ANS
 
-while [ ! "$ANS" = 'y' ] || [ ! "$ANS" = 'n' ]; do
+while [ ! "$ANS" = 'y' ] && [ ! "$ANS" = 'n' ]; do
 	echo
 	echo -n "[y/n] : "
 	read ANS
@@ -31,6 +31,8 @@ rm boost_1_64_0.tar.gz
 
 git clone https://github.com/google/benchmark
 cd benchmark
-
+mkdir .build
+cd .build
+cmake ..
 sudo make install
-cd ..
+cd ...
