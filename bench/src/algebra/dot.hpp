@@ -28,12 +28,32 @@ static void BM_dot_dumb(benchmark::State& state) {
 }
 BENCHMARK(BM_dot_dumb);
 
-static void BM_dot_simd(benchmark::State& state) {
+static void BM_dot_simd_full_unroll(benchmark::State& state) {
 	jp::pvector<mytype, std::size_t(16 * size)> p;
 	std::iota(p.data.begin(), p.data.end(), 0);
 
 	while(state.KeepRunning()){
-		benchmark::DoNotOptimize(ja::dot_simd(p, p));
+		benchmark::DoNotOptimize(ja::dot_simd_full_unroll(p, p));
 	}
 }
-BENCHMARK(BM_dot_simd);
+BENCHMARK(BM_dot_simd_full_unroll);
+
+static void BM_dot_simd_2_unrolls(benchmark::State& state) {
+	jp::pvector<mytype, std::size_t(16 * size)> p;
+	std::iota(p.data.begin(), p.data.end(), 0);
+
+	while(state.KeepRunning()){
+		benchmark::DoNotOptimize(ja::dot_simd_2_unrolls(p, p));
+	}
+}
+BENCHMARK(BM_dot_simd_2_unrolls);
+
+static void BM_dot_simd_1_unroll(benchmark::State& state) {
+	jp::pvector<mytype, std::size_t(16 * size)> p;
+	std::iota(p.data.begin(), p.data.end(), 0);
+
+	while(state.KeepRunning()){
+		benchmark::DoNotOptimize(ja::dot_simd_1_unroll(p, p));
+	}
+}
+BENCHMARK(BM_dot_simd_1_unroll);
