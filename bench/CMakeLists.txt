@@ -21,19 +21,6 @@ set(BENCH_TYPES
 	"char"
 )
 
-set(BENCH_SIZES
-	"10"
-	"16"
-	"32"
-	"100"
-	"128"
-	"512"
-	"1000"
-	"1024"
-	"4096"
-	"16384"
-	)
-
 #	Ckecking for packages
 
 #find_package(GBenchmark REQUIRED)
@@ -55,16 +42,11 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 foreach(BARCH ${BENCH_ARCHS})
 # Iterating over types
 foreach(BTYPE ${BENCH_TYPES})
-# Iterating over sizes
-#foreach(BSIZE ${BENCH_SIZES})
-		
-	#set(TNAME "prog_${BARCH}_${BTYPE}_${BSIZE}")
+
 	set(TNAME "prog_${BARCH}_${BTYPE}")
 	add_executable(${TNAME} ${SOURCES})
 	set_target_properties(${TNAME}
-		#PROPERTIES COMPILE_FLAGS " -m${BARCH} -DBENCH_TYPE=${BTYPE} -DBENCH_SIZE=${BSIZE}")
 		PROPERTIES COMPILE_FLAGS " -m${BARCH} -DBENCH_TYPE=${BTYPE}")
 
-#endforeach(BSIZE)
 endforeach(BTYPE)
 endforeach(BARCH)
