@@ -86,17 +86,28 @@ namespace ja = jp::algebra;
 		} \
 		BENCHMARK(BM_dot_pvector_simd_##size);
 
+#define BM_DOT_PVECTOR_SIMD_INNER(size) \
+		static void BM_dot_pvector_simd_inner_product_##size(benchmark::State& state) { \
+			jp::pvector<btype> p( (size) ); \
+			std::iota(p.begin(), p.end(), 0); \
+			while(state.KeepRunning()){ \
+				benchmark::DoNotOptimize(ja::dot_inner(p, p)); \
+			} \
+		} \
+		BENCHMARK(BM_dot_pvector_simd_inner_product_##size);
+
 #define BM_DOT_PVECTOR(size) \
 	BM_DOT_PVECTOR_DUMB(size) \
-	BM_DOT_PVECTOR_SIMD(size)
+	BM_DOT_PVECTOR_SIMD(size) \
+	BM_DOT_PVECTOR_SIMD_INNER(size)
 
 /*	====================
  *	GENERAL
  *	================= */
 
 #define BM_DOT(size) \
-	BM_DOT_PVECTOR(size) \
-	BM_DOT_PARRAY(size)
+	BM_DOT_PVECTOR(size)
+	//BM_DOT_PARRAY(size)
 
 
 BM_DOT(10)
