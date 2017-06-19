@@ -14,7 +14,7 @@
 #endif
 using btype = BENCH_TYPE;
 
-#define BM_array(size) \
+#define BM_ARRAY(size) \
 static void BM_dot_array_##size(benchmark::State& state) { \
 	alignas(boost::simd::pack<btype>::alignment) std::array<btype, (size)> arr; \
 	std::iota(arr.begin(), arr.end(), 0.f); \
@@ -24,7 +24,7 @@ static void BM_dot_array_##size(benchmark::State& state) { \
 } \
 BENCHMARK(BM_dot_array_##size);
 
-#define BM_vector(size) \
+#define BM_VECTOR(size) \
 static void BM_dot_vector_##size(benchmark::State& state) { \
 	std::vector<btype, boost::simd::allocator<btype>> arr( (size) ); \
 	std::iota(arr.begin(), arr.end(), 0.f); \
@@ -62,17 +62,17 @@ T arr_dot(std::array<T, N>& a, std::array<T, N>& b){
 	return res;
 }
 
-#define BM_vec_vs_arr(size) \
-	BM_vector(size) \
-	BM_array(size)
+#define BM_VEC_VS_ARR(size) \
+	BM_VECTOR(size) \
+	BM_ARRAY(size)
 
-BM_vec_vs_arr(10)
-BM_vec_vs_arr(16)
-BM_vec_vs_arr(32)
-BM_vec_vs_arr(100)
-BM_vec_vs_arr(128)
-BM_vec_vs_arr(512)
-BM_vec_vs_arr(1000)
-BM_vec_vs_arr(1024)
-BM_vec_vs_arr(4096)
-BM_vec_vs_arr(16384)
+BM_VEC_VS_ARR(10)
+BM_VEC_VS_ARR(16)
+BM_VEC_VS_ARR(32)
+BM_VEC_VS_ARR(100)
+BM_VEC_VS_ARR(128)
+BM_VEC_VS_ARR(512)
+BM_VEC_VS_ARR(1000)
+BM_VEC_VS_ARR(1024)
+BM_VEC_VS_ARR(4096)
+BM_VEC_VS_ARR(16384)
