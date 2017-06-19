@@ -95,6 +95,22 @@ namespace jp { namespace algebra {
 		return bs::sum(resp0) + ress;
 	}
 
+	template< typename T >
+	T dot_inner	( pvector<T>& a
+				, pvector<T>& b
+				) {
+		bs::pack<T> p_res{0};
+		T s_res = 0;
+
+		auto a_alr = bs::segmented_aligned_range(a.begin(), a.end());
+		auto b_alr = bs::segmented_aligned_range(b.begin(), b.end());
+
+		p_res = std::inner_product(a_alr.body.begin(), a_alr.body.end(), b_alr.body.begin(), p_res);
+		s_res = std::inner_product(a_alr.tail.begin(), a_alr.tail.end(), b_alr.tail.begin(), s_res);
+
+		return bs::sum(p_res) + s_res;
+	}
+
 	/**
 	 * @brief      Computes the dot product of a and b the dumb way.
 	 *
@@ -133,10 +149,13 @@ namespace jp { namespace algebra {
 		bs::pack<T> p_res{0};
 		T s_res = 0;
 
-		auto a_alr = bs::segmented_aligned_range_t<T>(a);
-		auto b_alr = bs::segmented_aligned_range_t<T>(b);
+		auto a_alr = bs::segmented_aligned_range(a.data.begin(), a.data.end());
+		auto b_alr = bs::segmented_aligned_range(b.data.begin(), b.data.end());
 
-		p_res = std::inner_product(std::get<1>(a_alr).begin(), std::get<1>(a_alr).end(), std::get<1>(b_alr).begin(), {0});
+		p_res = std::inner_product(a_alr.body.begin(), a_alr.body.end(), b_alr.body.begin(), p_res);
+		s_res = std::inner_product(a_alr.tail.begin(), a_alr.tail.end(), b_alr.tail.begin(), s_res);
+
+		return bs::sum(p_res) + s_res;
 	}
 
 //	template< typename T
