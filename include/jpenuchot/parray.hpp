@@ -22,26 +22,4 @@ namespace jp {
 			
 			alignas(boost::simd::pack<T>::alignment) std::array<T,N> data;
 	};
-
-	/**
-	 * @brief      Matches the size of two pvector objects
-	 *
-	 * @param[in]  a     First vector
-	 * @param[in]  b     Second vector
-	 *
-	 * @tparam     T     Contained type
-	 * @tparam     N     Size of a
-	 * @tparam     NN    Size of b
-	 *
-	 * @return     true if sizes match otherwise false
-	 */
-	template< typename T
-			, typename TT
-			, std::size_t N
-			, std::size_t NN
-			>
-	constexpr bool pVectorMatch ( const parray<T, N>  a
-								, const parray<TT, NN> b
-								)
-	{ return N == NN; }
 }

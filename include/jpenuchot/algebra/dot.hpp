@@ -29,10 +29,10 @@ namespace jp { namespace algebra {
 				) {
 		T res = 0;
 
-		auto first_a = a.data.data();
-		auto first_b = b.data.data();
+		auto first_a = a.data();
+		auto first_b = b.data();
 		
-		auto last_a = first_a + a.data.size();
+		auto last_a = first_a + a.size();
 
 		for(; first_a != last_a; first_a++, first_b++){ res += *first_a * *first_b; }
 
@@ -55,10 +55,10 @@ namespace jp { namespace algebra {
 		//	Scalar bit
 		T ress = 0;
 
-		T* a_ptr = a.data.data();
-		T* b_ptr = b.data.data();
+		T* a_ptr = a.data();
+		T* b_ptr = b.data();
 
-		T* a_end = a_ptr + a.data.size();
+		T* a_end = a_ptr + a.size();
 
 		//	Comfort...
 		constexpr auto sz = pack_t::static_size;

@@ -12,14 +12,6 @@
 #include <array>
 
 namespace jp {
-	
-	template< typename T
-			>
-	class pvector {
-		public:			
-			std::vector<T, boost::simd::allocator<T>> data;
-
-			pvector(std::size_t size):
-				data(std::vector<T, boost::simd::allocator<T>>(size)){}
-	};
+	template<typename T>
+	using pvector = std::vector<T, boost::simd::allocator<T>>;
 }
