@@ -2,6 +2,9 @@
 
 Roadmap
 
+- [ ] BENCH IACA
+- [ ] BENCH Stream
+
 - [X] jp::dot_dumb
 - [X] Benchmark for jp::dot_dumb
 
