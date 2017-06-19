@@ -58,9 +58,9 @@ namespace ja = jp::algebra;
 
 #define BM_DOT_PARRAY(size) \
 	BM_DOT_PARRAY_DUMB(size) \
-	BM_DOT_PARRAY_SIMD_FU(size) \
-	BM_DOT_PARRAY_SIMD_2U(size) \
 	BM_DOT_PARRAY_SIMD_1U(size)
+	//BM_DOT_PARRAY_SIMD_FU(size)
+	//BM_DOT_PARRAY_SIMD_2U(size)
 
 /*	====================
  *	VECTOR
@@ -69,7 +69,7 @@ namespace ja = jp::algebra;
 #define BM_DOT_PVECTOR_DUMB(size) \
 		static void BM_dot_pvector_dumb_##size(benchmark::State& state) { \
 			jp::pvector<btype> p( (size) ); \
-			std::iota(p.data.begin(), p.data.end(), 0); \
+			std::iota(p.begin(), p.end(), 0); \
 			while(state.KeepRunning()){ \
 				benchmark::DoNotOptimize(ja::dot_dumb(p, p)); \
 			} \
@@ -79,7 +79,7 @@ namespace ja = jp::algebra;
 #define BM_DOT_PVECTOR_SIMD(size) \
 		static void BM_dot_pvector_simd_##size(benchmark::State& state) { \
 			jp::pvector<btype> p( (size) ); \
-			std::iota(p.data.begin(), p.data.end(), 0); \
+			std::iota(p.begin(), p.end(), 0); \
 			while(state.KeepRunning()){ \
 				benchmark::DoNotOptimize(ja::dot_simd(p, p)); \
 			} \
