@@ -27,7 +27,7 @@ set(BENCH_TYPES
 
 #	Adding includes
 
-include_directories("../boost_1_64_0/include" "../boost.simd/include" "benchmark/include" "../include")
+include_directories("../boost_1_64_0" "../boost.simd/include" "benchmark/include" "../include")
 link_directories("/usr/local/lib")
 
 #	Linking libraries
