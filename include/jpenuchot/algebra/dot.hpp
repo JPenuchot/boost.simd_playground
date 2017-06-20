@@ -377,6 +377,7 @@ namespace jp { namespace algebra {
 				, parray<T, N>& b
 				) {
 		using pack_t = bs::pack<T>;
+		constexpr auto sz = pack_t::static_size;
 
 		//	Init SIMD vectors
 		pack_t resp0{0};
@@ -391,9 +392,6 @@ namespace jp { namespace algebra {
 		T* b_ptr = b.data.data();
 
 		T* a_end = a_ptr + a.data.size();
-
-		//	Comfort...
-		constexpr auto sz = pack_t::static_size;
 
 		//	SIMD, unrolled 4 times
 		for(; a_ptr + (sz * 4) <= a_end; a_ptr+= sz * 4, b_ptr+= sz * 4){

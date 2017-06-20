@@ -12,7 +12,6 @@
 #include <array>
 
 namespace jp {
-	
 	template< typename T
 			, std::size_t N
 			>
@@ -21,5 +20,6 @@ namespace jp {
 			constexpr std::size_t getSize(){ return N; }
 			
 			alignas(boost::simd::pack<T>::alignment) std::array<T,N> data;
+			//alignas(64) std::array<T,N> data;
 	};
 }
