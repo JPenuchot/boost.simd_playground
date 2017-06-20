@@ -25,19 +25,19 @@ namespace jp { namespace algebra {
 template	< typename T
 			, std::size_t N
 			>
-	T dot_simd	( std::array<T, N> a
-				, std::array<T, N> b
+	T dot_simd	( std::array<T, N>& a
+				, std::array<T, N>& b
 				) {
 		using pack_t = bs::pack<T>;
 
 		//	Init SIMD vectors
-		pack_t resp0{0};
-		pack_t resp1{0};
-		pack_t resp2{0};
-		pack_t resp3{0};
+		pack_t resp0{T(0)};
+		pack_t resp1{T(0)};
+		pack_t resp2{T(0)};
+		pack_t resp3{T(0)};
 
 		//	Scalar bit
-		T ress = 0;
+		auto ress = T(0);
 
 		T* a_ptr = a.data();
 		T* b_ptr = b.data();

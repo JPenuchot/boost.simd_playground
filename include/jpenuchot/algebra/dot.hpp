@@ -374,8 +374,8 @@ namespace jp { namespace algebra {
 			, std::size_t N
 			>
 	T dot_simd_1_unroll	( parray<T, N>& a
-				, parray<T, N>& b
-				) {
+						, parray<T, N>& b
+						) {
 		using pack_t = bs::pack<T>;
 		constexpr auto sz = pack_t::static_size;
 
