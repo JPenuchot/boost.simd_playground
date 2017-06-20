@@ -110,6 +110,9 @@ namespace ja = jp::algebra;
 	//BM_DOT_PARRAY(size)
 
 
+BM_DOT(2)
+BM_DOT(4)
+BM_DOT(8)
 BM_DOT(10)
 BM_DOT(16)
 BM_DOT(32)
