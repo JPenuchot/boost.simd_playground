@@ -13,13 +13,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 --std=c++14 -DNDEBUG")
 #	List of SIMD architectures
 set(BENCH_ARCHS
 	"avx"
-	"sse4.2"
+	#"sse4.2"
 )
 
 #	List of float typesw
 set(BENCH_TYPES
 	"float"
-	"double"
+	#"double"
 	#"int"
 	#"char"
 )
