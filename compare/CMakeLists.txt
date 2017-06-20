@@ -3,6 +3,9 @@ project(Compare)
 
 #	Adding compiler optimizations
 
+SET(CMAKE_C_COMPILER /usr/bin/clang)
+SET(CMAKE_CXX_COMPILER /usr/bin/clang++)
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++14 -mavx")
 
 #	Ckecking for packages
