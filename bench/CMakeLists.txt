@@ -3,8 +3,8 @@ project(Bench)
 
 #	Adding compiler optimizations
 
-SET(CMAKE_C_COMPILER /usr/bin/clang)
-SET(CMAKE_CXX_COMPILER /usr/bin/clang++)
+#SET(CMAKE_C_COMPILER /usr/bin/clang)
+#SET(CMAKE_CXX_COMPILER /usr/bin/clang++)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 --std=c++14 -DNDEBUG")
 
@@ -20,7 +20,7 @@ set(BENCH_ARCHS
 set(BENCH_TYPES
 	"float"
 	"double"
-	"int"
+	#"int"
 	#"char"
 )
 

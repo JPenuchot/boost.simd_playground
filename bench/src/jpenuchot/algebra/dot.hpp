@@ -58,9 +58,9 @@ namespace ja = jp::algebra;
 
 #define BM_DOT_PARRAY(size) \
 	BM_DOT_PARRAY_DUMB(size) \
-	BM_DOT_PARRAY_SIMD_1U(size)
-	//BM_DOT_PARRAY_SIMD_FU(size)
-	//BM_DOT_PARRAY_SIMD_2U(size)
+	BM_DOT_PARRAY_SIMD_1U(size) \
+	BM_DOT_PARRAY_SIMD_FU(size) \
+	BM_DOT_PARRAY_SIMD_2U(size) \
 
 /*	====================
  *	VECTOR
@@ -106,9 +106,8 @@ namespace ja = jp::algebra;
  *	================= */
 
 #define BM_DOT(size) \
-	BM_DOT_PVECTOR(size)
-	//BM_DOT_PARRAY(size)
-
+	BM_DOT_PVECTOR(size) \
+	BM_DOT_PARRAY(size)
 
 BM_DOT(2)
 BM_DOT(4)
