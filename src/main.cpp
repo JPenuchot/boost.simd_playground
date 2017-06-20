@@ -11,11 +11,10 @@ int main(){
 	jp::pvector<float> pvec(8 << 17);
 	std::iota(pvec.begin(), pvec.end(), 0);
 
-	auto x = jp::algebra::dot_dumb(pvec, pvec);
-	std::cout << x << '\n';
+	//auto x = jp::algebra::dot_dumb(pvec, pvec);
+	//std::cout << x << '\n';
 	auto y = jp::algebra::dot_simd(pvec, pvec);
 	std::cout << y << '\n';
-	auto z = jp::algebra::dot_inner(pvec, pvec);
-	std::cout << z << '\n';
+	//auto z = jp::algebra::dot_inner(pvec, pvec);
+	//std::cout << z << '\n';
 }
-
