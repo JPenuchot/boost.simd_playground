@@ -28,14 +28,14 @@ namespace ja = jp::algebra;
 		BENCHMARK(dot__parray__dumb__##size);
 
 #define BM_DOT_PARRAY_SIMD_INNER(size) \
-		static void dot__parray__simd__inner__##size(benchmark::State& state) { \
+		static void dot__parray__simd_inner__##size(benchmark::State& state) { \
 			jp::parray<btype, std::size_t((size))> p; \
 			std::iota(p.data.begin(), p.data.end(), 0); \
 			while(state.KeepRunning()){ \
 				benchmark::DoNotOptimize(ja::dot_inner(p, p)); \
 			} \
 		} \
-		BENCHMARK(dot__parray__simd__inner__##size);
+		BENCHMARK(dot__parray__simd_inner__##size);
 
 #define BM_DOT_PARRAY_SIMD_FU(size) \
 	static void dot__parray__simd_full_unroll__##size(benchmark::State& state) { \
@@ -84,14 +84,14 @@ namespace ja = jp::algebra;
  *	================= */
 
 #define BM_DOT_PVECTOR_DUMB(size) \
-		static void dot__pvector_dumb__##size(benchmark::State& state) { \
+		static void dot__pvector__dumb__##size(benchmark::State& state) { \
 			jp::pvector<btype> p((size)); \
 			std::iota(p.begin(), p.end(), 0); \
 			while(state.KeepRunning()){ \
 				benchmark::DoNotOptimize(ja::dot_dumb(p, p)); \
 			} \
 		} \
-		BENCHMARK(dot__pvector_dumb__##size);
+		BENCHMARK(dot__pvector__dumb__##size);
 
 #define BM_DOT_PVECTOR_SIMD(size) \
 		static void dot__pvector__simd__##size(benchmark::State& state) { \
