@@ -1,1 +1,6 @@
 theme: jekyll-theme-minimal
+
+title: ~devblog
+description: Benching, inspecting, testing code using boost.simd.
+show_downloads: true
+google_analytics:
