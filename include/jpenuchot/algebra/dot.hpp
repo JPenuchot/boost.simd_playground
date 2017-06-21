@@ -3,6 +3,7 @@
 #include <numeric>
 
 #include <boost/range/combine.hpp>
+#include <boost/range/numeric.hpp>
 #include <boost/foreach.hpp>
 
 #include <boost/simd/pack.hpp>
@@ -105,8 +106,8 @@ namespace jp { namespace algebra {
 		auto a_alr = bs::segmented_aligned_range(a.begin(), a.end());
 		auto b_alr = bs::segmented_aligned_range(b.begin(), b.end());
 
-		p_res = std::inner_product(a_alr.body.begin(), a_alr.body.end(), b_alr.body.begin(), p_res);
-		s_res = std::inner_product(a_alr.tail.begin(), a_alr.tail.end(), b_alr.tail.begin(), s_res);
+		p_res = boost::inner_product(a_alr.body, b_alr.body, p_res);
+		s_res = boost::inner_product(a_alr.tail, b_alr.tail, s_res);
 
 		return bs::sum(p_res) + s_res;
 	}
@@ -152,8 +153,8 @@ namespace jp { namespace algebra {
 		auto a_alr = bs::segmented_aligned_range(a.data.begin(), a.data.end());
 		auto b_alr = bs::segmented_aligned_range(b.data.begin(), b.data.end());
 
-		p_res = std::inner_product(a_alr.body.begin(), a_alr.body.end(), b_alr.body.begin(), p_res);
-		s_res = std::inner_product(a_alr.tail.begin(), a_alr.tail.end(), b_alr.tail.begin(), s_res);
+		p_res = boost::inner_product(a_alr.body, b_alr.body, p_res);
+		s_res = boost::inner_product(a_alr.tail, b_alr.tail, s_res);
 
 		return bs::sum(p_res) + s_res;
 	}
@@ -373,9 +374,9 @@ namespace jp { namespace algebra {
 	template< typename T
 			, std::size_t N
 			>
-	T dot_simd_1_unroll	( parray<T, N>& a
-						, parray<T, N>& b
-						) {
+	T dot_simd	( parray<T, N>& a
+				, parray<T, N>& b
+				) {
 		using pack_t = bs::pack<T>;
 		constexpr auto sz = pack_t::static_size;
 
