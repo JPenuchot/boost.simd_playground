@@ -3,11 +3,11 @@
 const fs = require('fs');
 
 //	Checking for args being filled
-//if(process.argv.length != 4){
-//	console.log("link-parser : Parses links that got tagged with a given string in your Facebook Group's posts.");
-//	console.log("Usage : link-parser [DATA_PATH] [TAG]");
-//	return;
-//}
+if(process.argv.length != 4){
+	console.log("json_to_csv.js : Parses JSON formatted benchmark results into plottable CSV results.");
+	console.log("Usage : json_to_csv.js [INPUT_JSON] [OUTPUT_CSV]");
+	return;
+}
 
 /**
  * Converts a JSON benchmark element from Google Benchmark to something more usable.
