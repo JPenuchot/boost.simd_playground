@@ -27,15 +27,15 @@ namespace ja = jp::algebra;
 		} \
 		BENCHMARK(dot__parray__dumb__##size);
 
-#define BM_DOT_PARRAY_INNER(size) \
-		static void dot__parray__inner_simd__##size(benchmark::State& state) { \
+#define BM_DOT_PARRAY_SIMD_INNER(size) \
+		static void dot__parray__simd__inner__##size(benchmark::State& state) { \
 			jp::parray<btype, std::size_t((size))> p; \
 			std::iota(p.data.begin(), p.data.end(), 0); \
 			while(state.KeepRunning()){ \
 				benchmark::DoNotOptimize(ja::dot_inner(p, p)); \
 			} \
 		} \
-		BENCHMARK(dot__parray__inner_simd__##size);
+		BENCHMARK(dot__parray__simd__inner__##size);
 
 #define BM_DOT_PARRAY_SIMD_FU(size) \
 	static void dot__parray__simd_full_unroll__##size(benchmark::State& state) { \
@@ -79,14 +79,6 @@ namespace ja = jp::algebra;
 	} \
 	BENCHMARK(dot__parray__simd_unsafe__##size);
 
-#define BM_DOT_PARRAY(size) \
-	BM_DOT_PARRAY_SIMD(size) \
-	BM_DOT_PARRAY_INNER(size) \
-	BM_DOT_PARRAY_DUMB(size)
-	//BM_DOT_PARRAY_SIMD_2U(size)
-	//BM_DOT_PARRAY_SIMD_FU(size)
-	//BM_DOT_PARRAY_SIMD_UNSAFE(size)
-
 /*	====================
  *	VECTOR
  *	================= */
@@ -102,50 +94,26 @@ namespace ja = jp::algebra;
 		BENCHMARK(dot__pvector_dumb__##size);
 
 #define BM_DOT_PVECTOR_SIMD(size) \
-		static void dot__pvector_simd__##size(benchmark::State& state) { \
+		static void dot__pvector__simd__##size(benchmark::State& state) { \
 			jp::pvector<btype> p((size)); \
 			std::iota(p.begin(), p.end(), 0); \
 			while(state.KeepRunning()){ \
 				benchmark::DoNotOptimize(ja::dot_simd(p, p)); \
 			} \
 		} \
-		BENCHMARK(dot__pvector_simd__##size);
+		BENCHMARK(dot__pvector__simd__##size);
 
 #define BM_DOT_PVECTOR_SIMD_INNER(size) \
-		static void dot__pvector_simd_inner__##size(benchmark::State& state) { \
+		static void dot__pvector__simd_inner__##size(benchmark::State& state) { \
 			jp::pvector<btype> p((size)); \
 			std::iota(p.begin(), p.end(), 0); \
 			while(state.KeepRunning()){ \
 				benchmark::DoNotOptimize(ja::dot_inner(p, p)); \
 			} \
 		} \
-		BENCHMARK(dot__pvector_simd_inner__##size);
-
-#define BM_DOT_PVECTOR(size) \
-	BM_DOT_PVECTOR_SIMD(size) \
-	BM_DOT_PVECTOR_SIMD_INNER(size) \
-	BM_DOT_PVECTOR_DUMB(size)
+		BENCHMARK(dot__pvector__simd_inner__##size);
 
 /*	====================
  *	GENERAL
  *	================= */
 
-#define BM_DOT(size) \
-	BM_DOT_PARRAY(size)
-	//BM_DOT_PVECTOR(size)
-
-BM_DOT(2)
-//BM_DOT(3)
-//BM_DOT(4)
-//BM_DOT(6)
-//BM_DOT(8)
-BM_DOT(10)
-BM_DOT(16)
-BM_DOT(32)
-//BM_DOT(100)
-//BM_DOT(128)
-//BM_DOT(512)
-BM_DOT(1000)
-//BM_DOT(1024)
-//BM_DOT(4096)
-BM_DOT(16384)
