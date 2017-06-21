@@ -36,9 +36,7 @@ echo
 
 EXEC_LIST=$(ls ${ORIGIN}/${BIN_DIR})
 
-echo
-
 for BENCH_EXEC in ${EXEC_LIST}; do
 	echo "Running ${BENCH_EXEC}..."
-	${BIN_DIR}/${BENCH_EXEC} --benchmark_repetitions=10 --benchmark_report_aggregates_only=true --benchmark_out=${ORIGIN}/${BIN_DIR}/${BENCH_EXEC}_report
+	${BIN_DIR}/${BENCH_EXEC} --benchmark_repetitions=10 --benchmark_report_aggregates_only=true --benchmark_out_format=json --benchmark_out=${ORIGIN}/${OUTPUT_DIR}/${BENCH_EXEC}_report.json
 done
