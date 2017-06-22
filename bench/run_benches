@@ -47,5 +47,5 @@ for BENCH_EXEC in ${EXEC_LIST}; do
 	echo
 	#${BIN_DIR}/${BENCH_EXEC} --benchmark_repetitions=10 --benchmark_report_aggregates_only=true --benchmark_out_format=json --benchmark_out=${ORIGIN}/${OUTPUT_DIR}/${BENCH_EXEC}_report.json
 	${BIN_DIR}/${BENCH_EXEC} --benchmark_out_format=json --benchmark_out=${ORIGIN}/${OUTPUT_DIR}/${BENCH_EXEC}_report.json
-	./tools/json_to_csv.js ${ORIGIN}/${OUTPUT_DIR}/${BENCH_EXEC}_report.json ${ORIGIN}/${OUTPUT_DIR}/${BENCH_EXEC}_report.csv ${ORIGIN}/${OUTPUT_DIR}/${BENCH_EXEC}_graph.svg
+	./tools/json_to_csv.js ${ORIGIN}/${OUTPUT_DIR}/${BENCH_EXEC}_report.json ${ORIGIN}/${OUTPUT_DIR}/${BENCH_EXEC}_graph
 done

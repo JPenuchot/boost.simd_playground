@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const plot = require('plotter').plot;
 
 /**
  * Converts a JSON benchmark element from Google Benchmark to something more usable.
@@ -15,20 +14,15 @@ function parse_elmt(elmt){
 
 	if(tail[1] == "stddev") return;
 	else return {
-		task : elmts[0],
+		category : elmts[0],
 		structure : elmts[1],
-		method : elmts[1] + "_" + elmts[2],
+		name : elmts[1] + "_" + elmts[2],
 		size : tail[0],
 		time : elmt.cpu_time,
 		unit : elmt.time_unit,
 	};
 }
 
-/**
- * Lists all the methods used in a bench
- *
- * @param      {gbenchmark_json}  pJSON   Google Benchmark parsed JSON
- */
 function list_methods(pJSON){
 	let ret = new Array();
 	pJSON.forEach(elmt => {
@@ -37,11 +31,6 @@ function list_methods(pJSON){
 	return ret.sort();
 }
 
-/**
- * Lists all the sizes used in a bench
- *
- * @param      {gbenchmark_json}  pJSON   Google Benchmark parsed JSON
- */
 function list_sizes(pJSON){
 	let ret = new Array();
 	pJSON.forEach(elmt => {
@@ -50,14 +39,28 @@ function list_sizes(pJSON){
 	return ret.sort((a,b) => a - b);
 }
 
+function list_categories(pJSON){
+	let ret = [];
+	pJSON.forEach(elmt => {
+		if(!ret.find(e => e == elmt.category)) ret.push(elmt.category);
+	});
+	return ret.sort();
+}
+
+function separate_categories(pJSON){
+	let ret = {};
+	list_categories(pJSON).forEach(cat => ret[cat] = pJSON.filter(elmt => elmt.category == cat));
+	return ret;
+}
+
 /*
  *	CODE
  */
 
 //	Checking for args being filled
-if(process.argv.length != 5){
-	console.log("json_to_csv.js : Parses JSON formatted benchmark results into plottable CSV results.");
-	console.log("Usage : json_to_csv.js [INPUT_JSON] [OUTPUT_CSV] [OUTPUT_SVG]");
+if(process.argv.length != 4){
+	console.log("json_to_svg.js : Renders JSON formatted benchmark results into SVG plots.");
+	console.log("Usage : bench_plotter.js [INPUT_JSON] [OUTPUT]_<category>.svg");
 	return;
 }
 
@@ -69,66 +72,38 @@ const default_csv_out_path = "../output/report.csv";
 const csv_out_path = process.argv[3] ? process.argv[3] : default_csv_out_path;
 
 const default_svg_out_path = "../output/graph.svg";
-const svg_out_path = process.argv[4] ? process.argv[4] : default_svg_out_path;
+const svg_out_path = process.argv[3] ? process.argv[3] : default_svg_out_path;
 
 //	Reading files
 const rawJson = fs.readFileSync(data_path);
 const parsedJson = JSON.parse(rawJson);
 const benches = parsedJson.benchmarks.map(parse_elmt);
 
-let sz_list = list_sizes(benches);
-let mt_list = list_methods(benches);
+const benches_sep = separate_categories(benches);
+const categories = list_categories(benches);
 
-let bench_map = {};
-let mplot = {};
+console.log(categories);
 
-//	Building bench_map (Associates (size, method) to the timing)
+categories.forEach(cat => {
+	let mplot = {};
 
-benches.forEach(elmt => {
-	if(!bench_map[elmt.size])
-		bench_map[elmt.size] = {};
-	bench_map[elmt.size][elmt.method] = elmt.time;
-});
-
-/*
- *	CSV Writing
- */
-
-// Header
-let sres = "#size,";
-mt_list.forEach(val => sres += val + ',');
-
-//	Body
-sz_list.forEach(sz => {
-	sres += '\n' + sz + ',';
-	mt_list.forEach(mt => sres += bench_map[sz][mt] + ',');
-});
-
-//	Writing file
-fs.writeFile(csv_out_path, sres, err => { if (err) throw err; });
-
-/*
- * Plotting
- */
-
-//	Building plot map
-
-mt_list.forEach(mt =>{
-	mplot[mt] = {};
-	sz_list.forEach(sz => {
-		mplot[mt][sz] = bench_map[sz][mt];
+	benches_sep[cat].forEach(bench => {
+		if(!mplot[bench.name])
+			mplot[bench.name] = {};
+		
+		mplot[bench.name][bench.size] = bench.time;
 	});
-});
 
-//	Actual plotting
+	let plot = require('plotter').plot;
 
-plot({
-	data:		mplot,
-	filename:	svg_out_path,
-	style:		'linespoints',
-	//title:		'Example \'Title\', \\n runs onto multiple lines',
-	logscale:	true,
-	xlabel:		'Element count',
-	ylabel:		'Time',
-	format:		'svg'
+	plot({
+			data:		mplot,
+			filename:	svg_out_path + '_' + cat + '.svg',
+			style:		'linespoints',
+			//title:		'Example \'Title\', \\n runs onto multiple lines',
+			logscale:	true,
+			xlabel:		'Element count',
+			ylabel:		'Time',
+			format:		'svg'
+		});
 });
