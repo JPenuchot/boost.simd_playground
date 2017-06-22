@@ -17,7 +17,7 @@ function parse_elmt(elmt){
 	else return {
 		task : elmts[0],
 		structure : elmts[1],
-		method : elmts[2],
+		method : elmts[1] + "_" + elmts[2],
 		size : tail[0],
 		time : elmt.cpu_time,
 		unit : elmt.time_unit,
@@ -50,6 +50,10 @@ function list_sizes(pJSON){
 	return ret.sort((a,b) => a - b);
 }
 
+/*
+ *	CODE
+ */
+
 //	Checking for args being filled
 if(process.argv.length != 5){
 	console.log("json_to_csv.js : Parses JSON formatted benchmark results into plottable CSV results.");
@@ -78,7 +82,7 @@ let mt_list = list_methods(benches);
 let bench_map = {};
 let mplot = {};
 
-//	Building bench_map
+//	Building bench_map (Associates (size, method) to the timing)
 
 benches.forEach(elmt => {
 	if(!bench_map[elmt.size])
@@ -86,10 +90,28 @@ benches.forEach(elmt => {
 	bench_map[elmt.size][elmt.method] = elmt.time;
 });
 
-//	Building mplot
+/*
+ *	CSV Writing
+ */
 
-//mplot['size'] = [];
-//sz_list.forEach(sz => mplot['size'].push(sz));
+// Header
+let sres = "#size,";
+mt_list.forEach(val => sres += val + ',');
+
+//	Body
+sz_list.forEach(sz => {
+	sres += '\n' + sz + ',';
+	mt_list.forEach(mt => sres += bench_map[sz][mt] + ',');
+});
+
+//	Writing file
+fs.writeFile(csv_out_path, sres, err => { if (err) throw err; });
+
+/*
+ * Plotting
+ */
+
+//	Building plot map
 
 mt_list.forEach(mt =>{
 	mplot[mt] = {};
@@ -98,26 +120,7 @@ mt_list.forEach(mt =>{
 	});
 });
 
-let sres = "#size,";
-
-// Header
-mt_list.forEach((val) => {
-	sres += val + ',';
-});
-sres += '\n';
-
-//	Body
-sz_list.forEach(sz => {
-	sres += sz + ','
-	mt_list.forEach(mt => sres += bench_map[sz][mt] + ',');
-	sres += '\n';
-});
-
-//	Writing file
-fs.writeFile(csv_out_path, sres, err => {
-  if (err) throw err;
-  console.log('Converted ' + data_path + ' to ' + csv_out_path);
-});
+//	Actual plotting
 
 plot({
 	data:		mplot,
@@ -125,7 +128,7 @@ plot({
 	style:		'linespoints',
 	//title:		'Example \'Title\', \\n runs onto multiple lines',
 	logscale:	true,
-	xlabel:		'size',
-	ylabel:		'time',
+	xlabel:		'Element count',
+	ylabel:		'Time',
 	format:		'svg'
 });
