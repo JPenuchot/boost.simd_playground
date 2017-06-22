@@ -16,7 +16,7 @@ function parse_elmt(elmt){
 	else return {
 		category : elmts[0],
 		structure : elmts[1],
-		name : elmts[1] + "_" + elmts[2],
+		name : (elmts[1] + " : " + elmts[2]).replace("_", " "),
 		size : tail[0],
 		time : elmt.cpu_time,
 		unit : elmt.time_unit,
