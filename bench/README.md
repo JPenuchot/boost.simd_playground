@@ -15,3 +15,9 @@ All benches must bee written following the same rules :
 - Macro name must be formatted as ```BM_[operation]_[type]_[method]```
 
 Be careful to respect the function name formatting as it will then be parsed according to this format.
+
+## Automatic plotting
+
+Because why the hell not ?
+
+Install "plotter" using npm, make sure gnuplot is installed on your machine and you're ready to go. Benchmark graphs are generated automatically with ```run_benches```.
