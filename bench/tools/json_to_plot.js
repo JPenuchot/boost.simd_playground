@@ -102,8 +102,8 @@ categories.forEach(cat => {
 			style:		'linespoints',
 			//title:		'Example \'Title\', \\n runs onto multiple lines',
 			logscale:	true,
-			xlabel:		'Element count',
-			ylabel:		'Time',
+			xlabel:		'Bench size',
+			ylabel:		'Time (lower is better)',
 			format:		'svg'
 		});
 });
