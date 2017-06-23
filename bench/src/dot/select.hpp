@@ -3,8 +3,7 @@
 #include "jpenuchot/select.hpp"
 #include "openblas/select.hpp"
 
-#undef BM_DOT
-#define BM_DOT\
+#define BM_DOT \
 	BM_DOT_SIZE(2) \
 	BM_DOT_SIZE(3) \
 	BM_DOT_SIZE(4) \
@@ -21,7 +20,6 @@
 	BM_DOT_SIZE(4096) \
 	BM_DOT_SIZE(16384)
 
-#undef BM_DOT_SIZE
 #define BM_DOT_SIZE(size) \
 	BM_DOT_JPENUCHOT(size) \
 	BM_DOT_BLAS(size)
