@@ -24,7 +24,6 @@ set(BENCH_TYPES
 
 #	Adding includes
 
-<<<<<<< HEAD
 include_directories(
 	"../ext/boost_1_64_0"
 	"../ext/boost.simd/include"
@@ -32,11 +31,6 @@ include_directories(
 	"../ext/OpenBLAS/include"
 	"../include" 
 )
-=======
-include_directories("../ext/boost_1_64_0" "../ext/boost.simd/include" "ext/benchmark/include" "../include" OpenBLAS_INCLUDE_DIR)
-link_directories("/usr/local/lib" OpenBLAS_LIB)
-
->>>>>>> d83c6a44c9dc024df7da095ce5c12d7797898b9c
 
 #	Linking libraries
 
