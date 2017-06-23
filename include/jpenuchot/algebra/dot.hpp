@@ -27,18 +27,7 @@ namespace jp { namespace algebra {
 			>
 	T dot_dumb	( pvector<T>& a
 				, pvector<T>& b
-				) {
-		T res = 0;
-
-		auto first_a = a.data();
-		auto first_b = b.data();
-		
-		auto last_a = first_a + a.size();
-
-		for(; first_a != last_a; first_a++, first_b++){ res += *first_a * *first_b; }
-
-		return res;
-	}
+				) { return std::inner_product(a.begin(), a.end(), b.begin(), T(0)); }
 
 	template< typename T
 			>
@@ -54,7 +43,7 @@ namespace jp { namespace algebra {
 		pack_t resp3{0};
 
 		//	Scalar bit
-		T ress = 0;
+		T ress = T(0);
 
 		T* a_ptr = a.data();
 		T* b_ptr = b.data();
@@ -101,7 +90,7 @@ namespace jp { namespace algebra {
 				, pvector<T>& b
 				) {
 		bs::pack<T> p_res{0};
-		T s_res = 0;
+		T s_res = T(0);
 
 		auto a_alr = bs::segmented_aligned_range(a.begin(), a.end());
 		auto b_alr = bs::segmented_aligned_range(b.begin(), b.end());
@@ -128,18 +117,7 @@ namespace jp { namespace algebra {
 			>
 	T dot_dumb	( parray<T, N>& a
 				, parray<T, N>& b
-				) {
-		T res = 0;
-
-		auto first_a = a.data.data();
-		auto first_b = b.data.data();
-		
-		auto last_a = first_a + a.data.size();
-
-		for(; first_a != last_a; first_a++, first_b++){ res += *first_a * *first_b; }
-
-		return res;
-	}
+				) { return boost::inner_product(a.data(), b.data(), T(0)); }
 
 	template< typename T
 			, std::size_t N
@@ -148,7 +126,7 @@ namespace jp { namespace algebra {
 				, parray<T, N>& b
 				) {
 		bs::pack<T> p_res{0};
-		T s_res = 0;
+		T s_res = T(0);
 
 		auto a_alr = bs::segmented_aligned_range(a.data.begin(), a.data.end());
 		auto b_alr = bs::segmented_aligned_range(b.data.begin(), b.data.end());
@@ -208,13 +186,13 @@ namespace jp { namespace algebra {
 		using pack_t = bs::pack<T>;
 
 		//	Init SIMD vectors
-		pack_t resp0{0};
-		pack_t resp1{0};
-		pack_t resp2{0};
-		pack_t resp3{0};
+		pack_t resp0{T(0)};
+		pack_t resp1{T(0)};
+		pack_t resp2{T(0)};
+		pack_t resp3{T(0)};
 
 		//	Scalar bit
-		T ress = 0;
+		T ress = T(0);
 
 		T* a_ptr = a.data.data();
 		T* b_ptr = b.data.data();
@@ -298,13 +276,13 @@ namespace jp { namespace algebra {
 		using pack_t = bs::pack<T>;
 
 		//	Init SIMD vectors
-		pack_t resp0{0};
-		pack_t resp1{0};
-		pack_t resp2{0};
-		pack_t resp3{0};
+		pack_t resp0{T(0)};
+		pack_t resp1{T(0)};
+		pack_t resp2{T(0)};
+		pack_t resp3{T(0)};
 
 		//	Scalar bit
-		T ress = 0;
+		T ress = T(0);
 
 		T* a_ptr = a.data.data();
 		T* b_ptr = b.data.data();
@@ -381,13 +359,13 @@ namespace jp { namespace algebra {
 		constexpr auto sz = pack_t::static_size;
 
 		//	Init SIMD vectors
-		pack_t resp0{0};
-		pack_t resp1{0};
-		pack_t resp2{0};
-		pack_t resp3{0};
+		pack_t resp0{T(0)};
+		pack_t resp1{T(0)};
+		pack_t resp2{T(0)};
+		pack_t resp3{T(0)};
 
 		//	Scalar bit
-		T ress = 0;
+		T ress = T(0);
 
 		T* a_ptr = a.data.data();
 		T* b_ptr = b.data.data();
