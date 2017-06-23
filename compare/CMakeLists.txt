@@ -14,7 +14,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++14 -mavx")
 
 #	Adding includes
 
-include_directories("../boost_1_64_0" "../boost.simd/include" "../include")
+include_directories("../ext/boost_1_64_0" "../ext/boost.simd/include" "../include")
 
 #	Linking libraries
 

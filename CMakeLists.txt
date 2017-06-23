@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.9)
-project(ProjName)
+project(Main)
 
 #	Adding compiler optimizations
 
@@ -11,7 +11,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++14 -msse4.2")
 
 #	Adding includes
 
-include_directories("boost_1_64_0" "boost.simd/include" "include")
+include_directories("ext/boost_1_64_0" "ext/boost.simd/include" "include")
 
 #	Linking libraries
 

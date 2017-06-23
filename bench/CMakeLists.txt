@@ -28,7 +28,7 @@ find_package(OpenBLAS REQUIRED)
 
 #	Adding includes
 
-include_directories("../boost_1_64_0" "../boost.simd/include" "benchmark/include" "../include" OpenBLAS_INCLUDE_DIR)
+include_directories("../ext/boost_1_64_0" "../ext/boost.simd/include" "ext/benchmark/include" "../include" OpenBLAS_INCLUDE_DIR)
 link_directories("/usr/local/lib" OpenBLAS_LIB)
 
 
