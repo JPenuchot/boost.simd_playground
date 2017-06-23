@@ -22,19 +22,27 @@ set(BENCH_TYPES
 	"double"
 )
 
-#	Ckecking for packages
-
-find_package(OpenBLAS REQUIRED)
-
 #	Adding includes
 
-include_directories("../boost_1_64_0" "../boost.simd/include" "benchmark/include" "../include" OpenBLAS_INCLUDE_DIR)
-link_directories("/usr/local/lib" OpenBLAS_LIB)
-
+include_directories(
+	"../ext/boost_1_64_0"
+	"../ext/boost.simd/include"
+	"../ext/benchmark/include"
+	"../ext/OpenBLAS/include"
+	"../include" 
+)
 
 #	Linking libraries
 
-link_libraries("benchmark" "pthread" "openblas")
+link_directories(
+	"/usr/local/lib"
+	"../ext/OpenBLAS/lib"
+)
+link_libraries(
+	"benchmark"
+	"pthread"
+	"openblas"
+)
 
 #	Adding sources
 

@@ -1,6 +1,8 @@
 #!/bin/bash
 
-echo 
+EXTLIB_FOLDER="ext/"
+
+echo
 
 echo -n "WARNING : This will install Google Benchmark in your /usr/local/lib folder, are you sure you want to continue ? [y/n] : "
 read ANS
@@ -16,6 +18,16 @@ if [ "$ANS" = 'n' ]; then
 fi
 
 echo
+
+## Preparing external lib folder
+
+if [ ! -d "${EXTLIB_FOLDER}" ]; then
+ 	mkdir ${EXTLIB_FOLDER}
+else
+	rm -rf ${EXTLIB_FOLDER}
+	mkdir ${EXTLIB_FOLDER}
+fi
+cd ${EXTLIB_FOLDER}
 
 # boost.simd
 
@@ -37,3 +49,11 @@ cmake ..
 sudo make install
 cd ..
 rm -rf .build
+cd ..
+
+# OpenBLAS
+
+git clone https://github.com/xianyi/OpenBLAS
+cd OpenBLAS
+make
+make install PREFIX=./

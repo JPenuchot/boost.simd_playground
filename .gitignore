@@ -5,18 +5,7 @@ bin/
 
 ## External libs
 
-# Boost
-
-boost_*/
-boost.simd/
-
-# Google Benchmark
-
-benchmark/
-
-# OpenBLAS
-
-OpenBLAS/
+ext/
 
 ## CMake
 
