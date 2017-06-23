@@ -2,11 +2,6 @@
 
 There you have some benchmark comparisons between "dumb" methods (No SIMD optimization) and the other ones : using SIMD inner product with boost.simd's ```segmented_aligned_range``` and a manually unrolled one (That is not optimized for small sizes... Yet).
 
-Units :
-
-- Time in nanoseconds
-- Bench size in number of elements
-
 Specs :
 
 - Dell XPS 9350
