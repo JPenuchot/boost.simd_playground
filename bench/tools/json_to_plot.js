@@ -82,8 +82,6 @@ const benches = parsedJson.benchmarks.map(parse_elmt);
 const benches_sep = separate_categories(benches);
 const categories = list_categories(benches);
 
-console.log(categories);
-
 categories.forEach(cat => {
 	let mplot = {};
 
