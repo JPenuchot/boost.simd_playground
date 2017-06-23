@@ -49,7 +49,6 @@ namespace ja = jp::algebra;
 	} \
 	BENCHMARK(dot__parray__simd_full_unroll__##size);
 
-
 #undef BM_DOT_PARRAY_SIMD_2U
 #define BM_DOT_PARRAY_SIMD_2U(size) \
 	static void dot__parray__simd_2_unrolls__##size(benchmark::State& state) { \

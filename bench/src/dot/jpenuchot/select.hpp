@@ -6,7 +6,6 @@
 
 #include "def.hpp"
 
-
 #undef BM_DOT_PARRAY
 #define BM_DOT_PARRAY(size) \
 	BM_DOT_PARRAY_SIMD(size) \
