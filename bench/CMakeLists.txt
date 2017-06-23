@@ -20,22 +20,21 @@ set(BENCH_ARCHS
 set(BENCH_TYPES
 	"float"
 	"double"
-	#"int"
-	#"char"
 )
 
 #	Ckecking for packages
 
-#find_package(GBenchmark REQUIRED)
+find_package(OpenBLAS REQUIRED)
 
 #	Adding includes
 
-include_directories("../boost_1_64_0" "../boost.simd/include" "benchmark/include" "../include")
-link_directories("/usr/local/lib")
+include_directories("../boost_1_64_0" "../boost.simd/include" "benchmark/include" "../include" OpenBLAS_INCLUDE_DIR)
+link_directories("/usr/local/lib" OpenBLAS_LIB)
+
 
 #	Linking libraries
 
-link_libraries("benchmark" "pthread")
+link_libraries("benchmark" "pthread" "openblas")
 
 #	Adding sources
 
