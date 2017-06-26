@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include <jpenuchot/algebra/dot.hpp>
+#include <jpenuchot/algebra/dot/dot.hpp>
 
 int main(){
 	jp::pvector<float> pvec(8 << 10);
