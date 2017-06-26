@@ -29,7 +29,7 @@ include_directories(
 	"../ext/boost.simd/include"
 	"../ext/benchmark/include"
 	"../ext/OpenBLAS/include"
-	"../include" 
+	"../include"
 )
 
 #	Linking libraries
