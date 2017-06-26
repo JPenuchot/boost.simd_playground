@@ -82,6 +82,8 @@ const benches = parsedJson.benchmarks.map(parse_elmt);
 const benches_sep = separate_categories(benches);
 const categories = list_categories(benches);
 
+const log_exponent = 1. / Math.log(2.);
+
 categories.forEach(cat => {
 	let mplot = {};
 
@@ -89,7 +91,7 @@ categories.forEach(cat => {
 		if(!mplot[bench.name])
 			mplot[bench.name] = {};
 		
-		mplot[bench.name][bench.size] = bench.time / bench.size;
+		mplot[bench.name][Math.log(bench.size) * log_exponent] = bench.time / bench.size;
 	});
 
 	let plot = require('plotter').plot;
@@ -99,9 +101,8 @@ categories.forEach(cat => {
 			filename:	svg_out_path + '_' + cat + '.svg',
 			style:		'linespoints',
 			//title:		'Example \'Title\', \\n runs onto multiple lines',
-			//logscale:	true,
-			xlabel:		'Bench size',
-			ylabel:		'Time (lower is better)',
+			xlabel:		'Bench size (log scale)',
+			ylabel:		'Time per element - ns/elmt (lower is better)',
 			format:		'svg'
 		});
 });
