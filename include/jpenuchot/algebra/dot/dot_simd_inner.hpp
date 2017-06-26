@@ -21,7 +21,7 @@ namespace jp { namespace algebra {
 						, parray<T, N>& b
 						) {
 		bs::pack<T> p_res{T(0)};
-		T s_res = T(0);
+		auto s_res = T(0);
 
 		auto a_alr = bs::segmented_aligned_range(a.begin(), a.end());
 		auto b_alr = bs::segmented_aligned_range(b.begin(), b.end());
@@ -37,7 +37,7 @@ namespace jp { namespace algebra {
 						, pvector<T>& b
 						) {
 		bs::pack<T> p_res{T(0)};
-		T s_res = T(0);
+		auto s_res = T(0);
 
 		auto a_alr = bs::segmented_aligned_range(a.begin(), a.end());
 		auto b_alr = bs::segmented_aligned_range(b.begin(), b.end());

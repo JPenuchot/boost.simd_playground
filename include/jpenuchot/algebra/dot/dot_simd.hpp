@@ -32,12 +32,12 @@ namespace jp { namespace algebra {
 		bs::pack<T> resp3{T(0)};
 
 		//	Scalar bit
-		T ress = T(0);
+		auto ress = T(0);
 
-		T* a_ptr = a.data();
-		T* b_ptr = b.data();
-
-		T* a_end = a_ptr + a.size();
+		//	Pointers
+		auto a_ptr = a.data();
+		auto b_ptr = b.data();
+		auto a_end = a_ptr + a.size();
 
 		//	SIMD, unrolled 4 times
 		while(a_ptr + sz4 <= a_end){
@@ -90,12 +90,12 @@ namespace jp { namespace algebra {
 		bs::pack<T> resp3{T(0)};
 
 		//	Scalar bit
-		T ress = T(0);
+		auto ress = T(0);
 
-		T* a_ptr = a.data();
-		T* b_ptr = b.data();
-
-		T* a_end = a_ptr + a.size();
+		//	Pointers
+		auto a_ptr = a.data();
+		auto b_ptr = b.data();
+		auto a_end = a_ptr + a.size();
 
 		//	SIMD, unrolled 4 times
 		while(a_ptr + sz4 <= a_end){
