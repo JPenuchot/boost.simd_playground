@@ -89,7 +89,7 @@ categories.forEach(cat => {
 		if(!mplot[bench.name])
 			mplot[bench.name] = {};
 		
-		mplot[bench.name][bench.size] = bench.time;
+		mplot[bench.name][bench.size] = bench.time / bench.size;
 	});
 
 	let plot = require('plotter').plot;
@@ -99,7 +99,7 @@ categories.forEach(cat => {
 			filename:	svg_out_path + '_' + cat + '.svg',
 			style:		'linespoints',
 			//title:		'Example \'Title\', \\n runs onto multiple lines',
-			logscale:	true,
+			//logscale:	true,
 			xlabel:		'Bench size',
 			ylabel:		'Time (lower is better)',
 			format:		'svg'
