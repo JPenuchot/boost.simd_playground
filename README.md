@@ -4,18 +4,11 @@ This is just a public repo to keep an online backup of my work at the LRI. The r
 
 You'll also find my dev blog about the project [here](http://www.penuch.it/boost.simd_playground/), which is basically a compilation of benchmarks, insights and remarks about [boost.simd](https://github.com/NumScale/boost.simd).
 
-## Structure
+## Installation/Dependencies
 
-The base type is located in jpenuchot/pvector.hpp, the algebric functions are then located in jpenuchot/algebra/*.hpp.
+The main requirements are :
 
-## Benchmarks
+-	CMake
+-	NPM
 
-Benchmarks are fully automated and based on [Google Benchmark](https://github.com/google/benchmark). You'll have to install it first then place it in the main folder.
-
-## Requirements
-
-[boost.simd](https://github.com/numscale/boost.simd) is also required and must be placed in the main folder, as well as [libboost 1.64](http://www.boost.org/users/history/version_1_64_0.html).
-
-## Install
-
-You can place folders manually and compile Google Benchmark yourself, or you might want to simply run ```./prepare```.
+To get the project ready to build simply execute ```./prepare``` and all the dependencies will be downloaded automatically.
