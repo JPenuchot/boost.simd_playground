@@ -12,6 +12,8 @@
 #include <array>
 
 namespace jp {
+	
+	/*
 	template< typename T
 			, std::size_t N
 			>
@@ -22,4 +24,8 @@ namespace jp {
 			alignas(boost::simd::pack<T>::alignment) std::array<T,N> data;
 			//alignas(64) std::array<T,N> data;
 	};
+	*/
+	template< typename T
+			, std::size_t N>
+	struct alignas(boost::simd::pack<T>::alignment) parray : std::array<T,N> {};
 }
