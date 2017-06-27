@@ -15,5 +15,5 @@
 	BM_DOT_SIZE(536870912)
 
 #define BM_DOT_SIZE(size) \
-	BM_DOT_JPENUCHOT(size)
-	//BM_DOT_BLAS(size)
+	BM_DOT_JPENUCHOT(size) \
+	BM_DOT_BLAS(size)
