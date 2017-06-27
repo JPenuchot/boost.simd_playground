@@ -16,5 +16,8 @@ namespace jp { namespace algebra {
 	 * @return     The dot product of A and B
 	 */
 	template< typename T >
-	constexpr T dot_simd(pvector<T>& a, pvector<T>& b) { return dot_simd_2(a, b); }
+	constexpr T dot_simd(
+		  const pvector<T>& a
+		, const pvector<T>& b
+		) { return dot_simd_2(a, b); }
 }	}
