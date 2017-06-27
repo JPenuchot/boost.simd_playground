@@ -1,13 +1,12 @@
-#include <iostream>
-#include <numeric>
+#include <boost/simd/pack.hpp>
 
-#include <cblas.h>
-#include <jpenuchot/pvector.hpp>
+#include <iostream>
+
+#include <jpenuchot/algebra/dot/dot.hpp>
 
 int main(){
-	constexpr std::size_t size = 8 << 10;
-	jp::pvector<float> pvec(size);
+	jp::pvector<float> pvec(8 << 10);
 	std::iota(pvec.begin(), pvec.end(), 0);
-	auto y = cblas_sdot(size, pvec.data(), 1, pvec.data(), 1);
+	auto y = jp::algebra::dot_simd_2(pvec, pvec);
 	std::cout << y << '\n';
 }
