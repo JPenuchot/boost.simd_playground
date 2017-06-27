@@ -77,7 +77,7 @@ const svg_out_path = process.argv[3] ? process.argv[3] : default_svg_out_path;
 //	Reading files
 const rawJson = fs.readFileSync(data_path);
 const parsedJson = JSON.parse(rawJson);
-const benches = parsedJson.benchmarks.map(parse_elmt);
+const benches = parsedJson.benchmarks.map(parse_elmt).filter(elmt => elmt ? true : false);
 
 const benches_sep = separate_categories(benches);
 const categories = list_categories(benches);
