@@ -1,0 +1,683 @@
+{
+  "context": {
+    "date": "2017-06-28 11:05:54",
+    "num_cpus": 2,
+    "mhz_per_cpu": 2394,
+    "cpu_scaling_enabled": false,
+    "library_build_type": "debug"
+  },
+  "benchmarks": [
+    {
+      "name": "dot__pvector__dumb__2_mean",
+      "iterations": 254814925,
+      "real_time": 3,
+      "cpu_time": 3,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__2_stddev",
+      "iterations": 0,
+      "real_time": 0,
+      "cpu_time": 0,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__2_mean",
+      "iterations": 74995860,
+      "real_time": 9,
+      "cpu_time": 9,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__2_stddev",
+      "iterations": 0,
+      "real_time": 0,
+      "cpu_time": 0,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__2_mean",
+      "iterations": 229648695,
+      "real_time": 3,
+      "cpu_time": 3,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__2_stddev",
+      "iterations": 0,
+      "real_time": 0,
+      "cpu_time": 0,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__2_mean",
+      "iterations": 85772169,
+      "real_time": 9,
+      "cpu_time": 9,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__2_stddev",
+      "iterations": 0,
+      "real_time": 0,
+      "cpu_time": 0,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__256_mean",
+      "iterations": 1188541,
+      "real_time": 464,
+      "cpu_time": 463,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__256_stddev",
+      "iterations": 0,
+      "real_time": 18,
+      "cpu_time": 18,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__256_mean",
+      "iterations": 5896109,
+      "real_time": 102,
+      "cpu_time": 102,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__256_stddev",
+      "iterations": 0,
+      "real_time": 9,
+      "cpu_time": 9,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__256_mean",
+      "iterations": 15125543,
+      "real_time": 31,
+      "cpu_time": 31,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__256_stddev",
+      "iterations": 0,
+      "real_time": 9,
+      "cpu_time": 9,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__256_mean",
+      "iterations": 16314684,
+      "real_time": 40,
+      "cpu_time": 40,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__256_stddev",
+      "iterations": 0,
+      "real_time": 2,
+      "cpu_time": 2,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__1024_mean",
+      "iterations": 366835,
+      "real_time": 1944,
+      "cpu_time": 1943,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__1024_stddev",
+      "iterations": 0,
+      "real_time": 67,
+      "cpu_time": 67,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__1024_mean",
+      "iterations": 1503292,
+      "real_time": 475,
+      "cpu_time": 475,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__1024_stddev",
+      "iterations": 0,
+      "real_time": 10,
+      "cpu_time": 10,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__1024_mean",
+      "iterations": 5988948,
+      "real_time": 118,
+      "cpu_time": 118,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__1024_stddev",
+      "iterations": 0,
+      "real_time": 1,
+      "cpu_time": 1,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__1024_mean",
+      "iterations": 5418994,
+      "real_time": 135,
+      "cpu_time": 135,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__1024_stddev",
+      "iterations": 0,
+      "real_time": 5,
+      "cpu_time": 5,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__2048_mean",
+      "iterations": 177706,
+      "real_time": 4050,
+      "cpu_time": 4049,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__2048_stddev",
+      "iterations": 0,
+      "real_time": 153,
+      "cpu_time": 153,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__2048_mean",
+      "iterations": 662564,
+      "real_time": 988,
+      "cpu_time": 987,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__2048_stddev",
+      "iterations": 0,
+      "real_time": 29,
+      "cpu_time": 29,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__2048_mean",
+      "iterations": 2887919,
+      "real_time": 250,
+      "cpu_time": 250,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__2048_stddev",
+      "iterations": 0,
+      "real_time": 12,
+      "cpu_time": 13,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__2048_mean",
+      "iterations": 2642421,
+      "real_time": 260,
+      "cpu_time": 260,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__2048_stddev",
+      "iterations": 0,
+      "real_time": 7,
+      "cpu_time": 7,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__4096_mean",
+      "iterations": 87212,
+      "real_time": 8075,
+      "cpu_time": 8074,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__4096_stddev",
+      "iterations": 0,
+      "real_time": 236,
+      "cpu_time": 237,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__4096_mean",
+      "iterations": 360686,
+      "real_time": 1973,
+      "cpu_time": 1973,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__4096_stddev",
+      "iterations": 0,
+      "real_time": 34,
+      "cpu_time": 34,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__4096_mean",
+      "iterations": 1397826,
+      "real_time": 506,
+      "cpu_time": 506,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__4096_stddev",
+      "iterations": 0,
+      "real_time": 17,
+      "cpu_time": 17,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__4096_mean",
+      "iterations": 1370838,
+      "real_time": 536,
+      "cpu_time": 535,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__4096_stddev",
+      "iterations": 0,
+      "real_time": 22,
+      "cpu_time": 22,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__16384_mean",
+      "iterations": 22104,
+      "real_time": 32309,
+      "cpu_time": 32302,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__16384_stddev",
+      "iterations": 0,
+      "real_time": 1030,
+      "cpu_time": 1028,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__16384_mean",
+      "iterations": 85711,
+      "real_time": 8032,
+      "cpu_time": 8031,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__16384_stddev",
+      "iterations": 0,
+      "real_time": 193,
+      "cpu_time": 193,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__16384_mean",
+      "iterations": 309016,
+      "real_time": 2212,
+      "cpu_time": 2212,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__16384_stddev",
+      "iterations": 0,
+      "real_time": 48,
+      "cpu_time": 48,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__16384_mean",
+      "iterations": 180050,
+      "real_time": 3556,
+      "cpu_time": 3556,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__16384_stddev",
+      "iterations": 0,
+      "real_time": 88,
+      "cpu_time": 88,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__262144_mean",
+      "iterations": 1321,
+      "real_time": 519177,
+      "cpu_time": 519092,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__262144_stddev",
+      "iterations": 0,
+      "real_time": 13698,
+      "cpu_time": 13712,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__262144_mean",
+      "iterations": 5614,
+      "real_time": 128783,
+      "cpu_time": 128761,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__262144_stddev",
+      "iterations": 0,
+      "real_time": 2723,
+      "cpu_time": 2719,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__262144_mean",
+      "iterations": 10273,
+      "real_time": 69614,
+      "cpu_time": 69606,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__262144_stddev",
+      "iterations": 0,
+      "real_time": 1427,
+      "cpu_time": 1427,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__262144_mean",
+      "iterations": 9324,
+      "real_time": 73213,
+      "cpu_time": 73195,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__262144_stddev",
+      "iterations": 0,
+      "real_time": 918,
+      "cpu_time": 906,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__983040_mean",
+      "iterations": 363,
+      "real_time": 1954050,
+      "cpu_time": 1950141,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__983040_stddev",
+      "iterations": 0,
+      "real_time": 40239,
+      "cpu_time": 40059,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__983040_mean",
+      "iterations": 1469,
+      "real_time": 488789,
+      "cpu_time": 488614,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__983040_stddev",
+      "iterations": 0,
+      "real_time": 17361,
+      "cpu_time": 17412,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__983040_mean",
+      "iterations": 2697,
+      "real_time": 266410,
+      "cpu_time": 266341,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__983040_stddev",
+      "iterations": 0,
+      "real_time": 7961,
+      "cpu_time": 7989,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__983040_mean",
+      "iterations": 2605,
+      "real_time": 276625,
+      "cpu_time": 276566,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__983040_stddev",
+      "iterations": 0,
+      "real_time": 4977,
+      "cpu_time": 4980,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__1966080_mean",
+      "iterations": 170,
+      "real_time": 3977884,
+      "cpu_time": 3977243,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__1966080_stddev",
+      "iterations": 0,
+      "real_time": 119621,
+      "cpu_time": 119870,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__1966080_mean",
+      "iterations": 739,
+      "real_time": 959404,
+      "cpu_time": 959303,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__1966080_stddev",
+      "iterations": 0,
+      "real_time": 8222,
+      "cpu_time": 8212,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__1966080_mean",
+      "iterations": 1332,
+      "real_time": 533331,
+      "cpu_time": 533248,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__1966080_stddev",
+      "iterations": 0,
+      "real_time": 6588,
+      "cpu_time": 6642,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__1966080_mean",
+      "iterations": 1061,
+      "real_time": 552449,
+      "cpu_time": 552370,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__1966080_stddev",
+      "iterations": 0,
+      "real_time": 12607,
+      "cpu_time": 12626,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__16777216_mean",
+      "iterations": 21,
+      "real_time": 33450292,
+      "cpu_time": 33444307,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__16777216_stddev",
+      "iterations": 0,
+      "real_time": 450235,
+      "cpu_time": 450549,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__16777216_mean",
+      "iterations": 62,
+      "real_time": 11796501,
+      "cpu_time": 11794971,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__16777216_stddev",
+      "iterations": 0,
+      "real_time": 542256,
+      "cpu_time": 542978,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__16777216_mean",
+      "iterations": 57,
+      "real_time": 12070941,
+      "cpu_time": 12069283,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__16777216_stddev",
+      "iterations": 0,
+      "real_time": 312559,
+      "cpu_time": 313152,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__16777216_mean",
+      "iterations": 65,
+      "real_time": 11292145,
+      "cpu_time": 11290981,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__16777216_stddev",
+      "iterations": 0,
+      "real_time": 204309,
+      "cpu_time": 203696,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__67108864_mean",
+      "iterations": 5,
+      "real_time": 134995162,
+      "cpu_time": 134977704,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__67108864_stddev",
+      "iterations": 0,
+      "real_time": 2075043,
+      "cpu_time": 2091214,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__67108864_mean",
+      "iterations": 14,
+      "real_time": 51411782,
+      "cpu_time": 51402450,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__67108864_stddev",
+      "iterations": 0,
+      "real_time": 2314517,
+      "cpu_time": 2315490,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__67108864_mean",
+      "iterations": 14,
+      "real_time": 48178284,
+      "cpu_time": 48173184,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__67108864_stddev",
+      "iterations": 0,
+      "real_time": 1844192,
+      "cpu_time": 1840315,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__67108864_mean",
+      "iterations": 15,
+      "real_time": 44723313,
+      "cpu_time": 44715810,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__67108864_stddev",
+      "iterations": 0,
+      "real_time": 814595,
+      "cpu_time": 812972,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__268435456_mean",
+      "iterations": 1,
+      "real_time": 564248423,
+      "cpu_time": 564143624,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__dumb__268435456_stddev",
+      "iterations": 0,
+      "real_time": 25828712,
+      "cpu_time": 25868807,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__268435456_mean",
+      "iterations": 4,
+      "real_time": 199993056,
+      "cpu_time": 199957033,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd_inner__268435456_stddev",
+      "iterations": 0,
+      "real_time": 6311702,
+      "cpu_time": 6326902,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__268435456_mean",
+      "iterations": 3,
+      "real_time": 195825031,
+      "cpu_time": 195803231,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__simd__268435456_stddev",
+      "iterations": 0,
+      "real_time": 8455014,
+      "cpu_time": 8438807,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__268435456_mean",
+      "iterations": 4,
+      "real_time": 182097454,
+      "cpu_time": 182009145,
+      "time_unit": "ns"
+    },
+    {
+      "name": "dot__pvector__openblas__268435456_stddev",
+      "iterations": 0,
+      "real_time": 5688053,
+      "cpu_time": 5703468,
+      "time_unit": "ns"
+    }
+  ]
+}
