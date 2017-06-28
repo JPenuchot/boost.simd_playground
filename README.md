@@ -17,6 +17,8 @@ To get the project ready to build simply execute ```./prepare``` and all the dep
 
 The project's goal is to develop some basic algebra functions like dot product, gemm and gemv using boost.simd to make a series of benchmarks and code inspection. Ultimately we compare ourselves with OpenBLAS as it features handcrafted assembly code for each architecture. To make it short : the goal is to compare boost.simd's approach (Atomic SIMD abstraction thanks to boost.simd, generic code for everything else) with OpenBLAS' approach (Assembly code tailored to each major CPU architecture).
 
+Multiple versions of thte "dot_simd" functions have been made and kept under ```algebra/dot/dot_versions.hpp```, which enables us to have a look at the impact of small tweaks on the generated code using the ```compare/``` folder, which is just a project that automatically compiles and dumps assembly code. Set up Sublime Text in a 4 panel view and you *might* even forget compiler-explorer. :sunglasses:
+
 Basic types :
 
 - ```jp::pvector``` : Simply an std::vector that uses boost.simd's aligned allocator. Nothing more, nothing less.
