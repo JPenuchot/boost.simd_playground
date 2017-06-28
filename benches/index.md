@@ -53,7 +53,7 @@ Units :
 
 ## Maths
 
-Now comes the part where we calculate two values : the peak FLOPS, and the max FLOP/cycle values for each version of the dot product, which is reached for a pvector of 2048 elements :
+Now comes the part where we calculate two values : the peak FLOPS, and the max FLOP/cycle values for each version of the dot product, which is reached for a pvector of 2048 elements (Data available [here](https://github.com/JPenuchot/boost.simd_playground/tree/gh-pages/benches/content)) :
 
 ```
 res += a[i] * b[i] -> *, += -> 2 floating point operations per element
