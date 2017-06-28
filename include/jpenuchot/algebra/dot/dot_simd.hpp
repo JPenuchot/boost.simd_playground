@@ -19,5 +19,5 @@ namespace jp { namespace algebra {
 	constexpr T dot_simd(
 		  const pvector<T>& a
 		, const pvector<T>& b
-		) { return dot_simd_2(a, b); }
+		) { return dot_simd_4(a, b); }
 }	}
