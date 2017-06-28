@@ -5,10 +5,11 @@
 
 #include <jpenuchot/algebra/dot/dot.hpp>
 
-#ifndef BENCH_TYPE
-	#define BENCH_TYPE float
+#ifdef BENCH_DOUBLE
+	using btype = double;
+#else
+	using btype = float;
 #endif
-using btype = BENCH_TYPE;
 
 namespace ja = jp::algebra;
 

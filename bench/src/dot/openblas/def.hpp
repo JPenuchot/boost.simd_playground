@@ -5,10 +5,11 @@
 
 #include <cblas.h>
 
-#ifndef BENCH_TYPE
-	#define BENCH_TYPE float
+#ifdef BENCH_DOUBLE
+	using btype = double;
+#else
+	using btype = float;
 #endif
-using btype = BENCH_TYPE;
 
 //	Function overloads (because cblas is very user friendly)
 
