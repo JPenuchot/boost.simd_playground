@@ -16,12 +16,6 @@ set(BENCH_ARCHS
 	"sse4.2"
 )
 
-#	List of float typesw
-set(BENCH_TYPES
-	"float"
-	"double"
-)
-
 #	Adding includes
 
 include_directories(
@@ -50,13 +44,17 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 
 # Iterating over architectures
 foreach(BARCH ${BENCH_ARCHS})
-# Iterating over types
-foreach(BTYPE ${BENCH_TYPES})
 
-	set(TNAME "bench_${BARCH}_${BTYPE}")
+	# Building single precision bench
+	set(TNAME "bench_${BARCH}_float")
 	add_executable(${TNAME} ${SOURCES})
 	set_target_properties(${TNAME}
-		PROPERTIES COMPILE_FLAGS " -m${BARCH} -DBENCH_TYPE=${BTYPE}")
+		PROPERTIES COMPILE_FLAGS " -m${BARCH}")
 
-endforeach(BTYPE)
+	# Building double precision bench
+	set(TNAME "bench_${BARCH}_double")
+	add_executable(${TNAME} ${SOURCES})
+	set_target_properties(${TNAME}
+		PROPERTIES COMPILE_FLAGS " -m${BARCH} -DBENCH_DOUBLE")
+
 endforeach(BARCH)
