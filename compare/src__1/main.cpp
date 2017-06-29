@@ -49,11 +49,11 @@ template< typename T
 			resp2 = bs::fma(pack_t(&a_ptr[sz2]), pack_t(&b_ptr[sz2]), resp2);
 			resp3 = bs::fma(pack_t(&a_ptr[sz3]), pack_t(&b_ptr[sz3]), resp3);
 		}
-
+		IACA_END
+		
 		resp0 += resp1;
 		resp2 += resp3;
 		resp0 += resp2;
-		IACA_END
 
 		//	Scalar (end)
 		for(; a_ptr < a_end; a_ptr++, b_ptr++)
