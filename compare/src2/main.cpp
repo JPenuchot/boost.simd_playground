@@ -4,6 +4,7 @@
 #include <jpenuchot/pvector.hpp>
 #include <cblas.h>
 
+#include <iacaMarks.h>
 
 int main(){
 	jp::pvector<float> pvec(8 << 10);

@@ -4,6 +4,9 @@
 
 ORIGIN=$(pwd)
 
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${ORIGIN}/../ext/iaca-lin64/lib/
+export PATH=${PATH}:${ORIGIN}/../ext/iaca-lin64/bin/
+
 DEFAULT_CMAKE_BUILD_DIR=".build"
 DEFAULT_BIN_DIR="bin"
 
@@ -40,10 +43,13 @@ cmake ${ORIGIN}
 make
 mv prog* ${ORIGIN}/${BIN_DIR}
 
-rm ${ORIGIN}/${BIN_DIR}/*.asm
+cd ${ORIGIN}
 
-EXEC_LIST=$(ls ${ORIGIN}/${BIN_DIR})
+rm ${BIN_DIR}/*.asm
+
+EXEC_LIST=$(ls ${BIN_DIR})
 
 for DUMP_EXEC in ${EXEC_LIST}; do
-	objdump -dC ${ORIGIN}/${BIN_DIR}/${DUMP_EXEC} > ${ORIGIN}/${BIN_DIR}/${DUMP_EXEC}.asm
+	objdump -dC ${BIN_DIR}/${DUMP_EXEC} > ${BIN_DIR}/${DUMP_EXEC}.asm
+	iaca ${BIN_DIR}/${DUMP_EXEC} > ${BIN_DIR}/${DUMP_EXEC}.iaca
 done
