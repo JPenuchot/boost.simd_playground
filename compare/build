@@ -51,5 +51,5 @@ EXEC_LIST=$(ls ${BIN_DIR})
 
 for DUMP_EXEC in ${EXEC_LIST}; do
 	objdump -dC ${BIN_DIR}/${DUMP_EXEC} > ${BIN_DIR}/${DUMP_EXEC}.asm
-	iaca ${BIN_DIR}/${DUMP_EXEC} > ${BIN_DIR}/${DUMP_EXEC}.iaca
+	iaca -o ${BIN_DIR}/${DUMP_EXEC}.iaca ${BIN_DIR}/${DUMP_EXEC}
 done
