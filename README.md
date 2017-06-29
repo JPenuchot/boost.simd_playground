@@ -1,7 +1,5 @@
 # boost.simd_playground
 
-![](./boostsimd-floor-is.jpg)
-
 This is just a public repo to keep an online backup of my work at the LRI. The roadmap is detailed [here](./TODO.md).
 
 You'll also find my dev blog about the project [here](http://www.penuch.it/boost.simd_playground/), which is basically a compilation of benchmarks, insights and remarks about [boost.simd](https://github.com/NumScale/boost.simd).
@@ -27,6 +25,8 @@ Basic types :
 - ```jp::parray``` (Deprecated..?) : Inherits std::array, optimally aligned
 
 Both types are aligned using the default size of a boost::simd::pack to match with the size of the SIMD registers of the CPU the program is being compiled for.
+
+![](./boostsimd-floor-is.jpg)
 
 ## Examples
 
