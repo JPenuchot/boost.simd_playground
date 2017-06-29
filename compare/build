@@ -46,6 +46,7 @@ mv prog* ${ORIGIN}/${BIN_DIR}
 cd ${ORIGIN}
 
 rm ${BIN_DIR}/*.asm
+rm ${BIN_DIR}/*.iaca
 
 EXEC_LIST=$(ls ${BIN_DIR})
 

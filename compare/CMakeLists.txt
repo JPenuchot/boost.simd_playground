@@ -30,8 +30,16 @@ link_libraries("openblas")
 
 #	Adding sources
 
-file(GLOB_RECURSE SOURCES1 "src1/*.cpp")
-file(GLOB_RECURSE SOURCES2 "src2/*.cpp")
+#	Getting a list of the source directories
+file(GLOB SOURCE_DIRS "src__*")
 
-add_executable(prog1 ${SOURCES1})
-add_executable(prog2 ${SOURCES2})
+foreach(SRCDIR ${SOURCE_DIRS})
+	#	Splitting directory's name into a list that will contain the name of the executable
+	string(REPLACE "__" ";" SRCDIR_PARSED ${SRCDIR})
+	list(GET SRCDIR_PARSED 1 EXEC_NAME)
+
+	#	Getting sources...
+	file(GLOB_RECURSE SOURCES "${SRCDIR}/*.cpp")
+
+	add_executable("prog_${EXEC_NAME}" ${SOURCES})
+endforeach(SRCDIR)
