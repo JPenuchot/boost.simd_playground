@@ -2,7 +2,7 @@
 
 #include "dot_simd_versions.hpp"
 
-namespace jp { namespace algebra {
+namespace pg { namespace algebra {
 	namespace bs = boost::simd;
 
 	/**

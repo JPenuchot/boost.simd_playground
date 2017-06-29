@@ -5,7 +5,7 @@
 #include "../../parray.hpp"
 #include "../../pvector.hpp"
 
-namespace jp { namespace algebra {
+namespace pg { namespace algebra {
 	template< typename T
 			>
 	T dot_dumb	( const pvector<T>& a

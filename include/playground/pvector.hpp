@@ -11,7 +11,7 @@
 #include <vector>
 #include <array>
 
-namespace jp {
-	template<typename T, std::size_t N, std::size_t M>
-	using pvector<N, M> = std::vector<T, boost::simd::allocator<T>>;
+namespace pg {
+	template<typename T>
+	using pvector = std::vector<T, boost::simd::allocator<T>>;
 }

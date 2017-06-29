@@ -10,14 +10,14 @@
 #include <boost/simd/function/dot.hpp>
 #include <boost/simd/function/sum.hpp>
 
-#include <jpenuchot/pvector.hpp>
+#include <playground/pvector.hpp>
 
 #include <iacaMarks.h>
 
 template< typename T
 			>
-	T dot_simd	( const jp::pvector<T>& a
-				, const jp::pvector<T>& b
+	T dot_simd	( const pg::pvector<T>& a
+				, const pg::pvector<T>& b
 				) {
 		namespace bs = boost::simd;
 
@@ -63,7 +63,7 @@ template< typename T
 	}
 
 int main(){
-	jp::pvector<float> pvec(8 << 10);
+	pg::pvector<float> pvec(8 << 10);
 	std::iota(pvec.begin(), pvec.end(), 0);
 	auto y = dot_simd(pvec, pvec);
 	std::cout << y << '\n';

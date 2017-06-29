@@ -21,8 +21,8 @@ Multiple versions of thte "dot_simd" functions have been made and kept under ```
 
 Basic types :
 
-- ```jp::pvector``` : Simply an std::vector that uses boost.simd's aligned allocator. Nothing more, nothing less.
-- ```jp::parray``` (Deprecated..?) : Inherits std::array, optimally aligned
+- ```pg::pvector``` : Simply an std::vector that uses boost.simd's aligned allocator. Nothing more, nothing less.
+- ```pg::parray``` (Deprecated..?) : Inherits std::array, optimally aligned
 
 Both types are aligned using the default size of a boost::simd::pack to match with the size of the SIMD registers of the CPU the program is being compiled for.
 
@@ -42,13 +42,13 @@ Using boost.simd optimized kernel :
 #include <iostream>
 #include <numeric>
 
-#include <jpenuchot/pvector.hpp>
-#include <jpenuchot/algebra/dot/dot.hpp>
+#include <playground/pvector.hpp>
+#include <playground/algebra/dot/dot.hpp>
 
 int main(){
-	jp::pvector<float> pvec(8 << 10);
+	pg::pvector<float> pvec(8 << 10);
 	std::iota(pvec.begin(), pvec.end(), 0);
-	auto y = jp::algebra::dot_simd(pvec, pvec);
+	auto y = pg::algebra::dot_simd(pvec, pvec);
 	std::cout << y << '\n';
 }
 ```
@@ -59,12 +59,12 @@ Using cblas :
 #include <iostream>
 #include <numeric>
 
-#include <jpenuchot/pvector.hpp>
+#include <playground/pvector.hpp>
 #include <cblas.h>
 
 
 int main(){
-	jp::pvector<float> pvec(8 << 10);
+	pg::pvector<float> pvec(8 << 10);
 	std::iota(pvec.begin(), pvec.end(), 0);
 	auto y = cblas_sdot(8 << 10, pvec.data(), 1, pvec.data(), 1);
 	std::cout << y << '\n';

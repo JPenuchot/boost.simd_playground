@@ -4,9 +4,9 @@
 #include <boost/simd/memory/allocator.hpp>
 #include <boost/simd/pack.hpp>
 
-#include <jpenuchot/parray.hpp>
-#include <jpenuchot/pvector.hpp>
-#include <jpenuchot/algebra/unsafe_dot.hpp>
+#include <playground/parray.hpp>
+#include <playground/pvector.hpp>
+#include <playground/algebra/unsafe_dot.hpp>
 
 #include <vector>
 #include <array>
@@ -18,7 +18,7 @@
 #endif
 using btype = BENCH_TYPE;
 
-namespace ja = jp::algebra;
+namespace pa = pg::algebra;
 
 #define BM_ARRAY(size) \
 static void BM_dot_array_##size(benchmark::State& state) { \
@@ -37,7 +37,7 @@ static void BM_dot_array_simd_##size(benchmark::State& state) { \
 	std::array<btype, (size)> arr; \
 	std::iota(arr.begin(), arr.end(), 0.f); \
 	while(state.KeepRunning()){ \
-		benchmark::DoNotOptimize(ja::dot_simd(arr, arr)); \
+		benchmark::DoNotOptimize(pg::dot_simd(arr, arr)); \
 	} \
 } \
 BENCHMARK(BM_dot_array_simd_##size);
@@ -47,7 +47,7 @@ static void BM_dot_array_simd_aligned_##size(benchmark::State& state) { \
 	alignas(boost::simd::pack<btype>::alignment) std::array<btype, (size)> arr; \
 	std::iota(arr.begin(), arr.end(), 0.f); \
 	while(state.KeepRunning()){ \
-		benchmark::DoNotOptimize(ja::dot_simd(arr, arr)); \
+		benchmark::DoNotOptimize(pg::dot_simd(arr, arr)); \
 	} \
 } \
 BENCHMARK(BM_dot_array_simd_aligned_##size);

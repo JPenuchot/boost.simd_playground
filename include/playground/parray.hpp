@@ -11,7 +11,7 @@
 #include <vector>
 #include <array>
 
-namespace jp {
+namespace pg {
 	
 	/*
 	template< typename T

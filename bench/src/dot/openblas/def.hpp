@@ -1,7 +1,7 @@
 #include <benchmark/benchmark_api.h>
 
-#include <jpenuchot/parray.hpp>
-#include <jpenuchot/pvector.hpp>
+#include <playground/parray.hpp>
+#include <playground/pvector.hpp>
 
 #include <cblas.h>
 
@@ -21,7 +21,7 @@ double openblas_dot(const int n, double* x, const int incx, double* y, const int
 
 #define BM_DOT_PVECTOR_OPENBLAS(size) \
 		static void dot__pvector__openblas__##size(benchmark::State& state) { \
-			jp::pvector<btype> p((size)); \
+			pg::pvector<btype> p((size)); \
 			std::iota(p.begin(), p.end(), 0); \
 			while(state.KeepRunning()){ \
 				openblas_dot(size, p.data(), 1, p.data(), 1); \

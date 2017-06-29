@@ -11,7 +11,7 @@
 #include "../../parray.hpp"
 #include "../../pvector.hpp"
 
-namespace jp { namespace algebra {
+namespace pg { namespace algebra {
 	namespace bs = boost::simd;
 
 	template< typename T
