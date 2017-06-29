@@ -70,5 +70,3 @@ int main(){
 	std::cout << y << '\n';
 }
 ```
-
-NB : Lib name/namespaces will be refactored later. Putting my name everywhere started out as a joke but it's becoming quite awkward...
