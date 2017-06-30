@@ -7,6 +7,10 @@ bin/
 
 ext/
 
+## Code comparison
+
+compare/
+
 ## CMake
 
 CMakeCache.txt
