@@ -1,7 +1,5 @@
 #pragma once
 
-#include <boost/array.hpp>
-#include <boost/simd/memory/allocator.hpp>
 #include <boost/simd/pack.hpp>
 
 #include <iterator>
