@@ -1,14 +1,7 @@
-//	pVector : Vector type optimized using boost::simd::pack type.
-
 #pragma once
 
-#include <boost/array.hpp>
-#include <boost/simd/memory/allocator.hpp>
 #include <boost/simd/pack.hpp>
 
-#include <iterator>
-#include <algorithm>
-#include <vector>
 #include <array>
 
 #include "helpers/padding.hpp"
@@ -30,10 +23,5 @@ namespace pg {
 
 	public:
 		static const auto padded_height = padding::padded_size<T>(M);
-
-		constexpr auto& operator() (const std::size_t i, const std::size_t j){ return this[i * padded_width + j]; }
-		//constexpr T operator() (std::size_t i, std::size_t j){ return this[i * padded_width + j]; }
-		
-		constexpr auto column_height(){ return padded_height; }
 	};
 }
