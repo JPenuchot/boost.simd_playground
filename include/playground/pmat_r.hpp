@@ -5,6 +5,7 @@
 #include <array>
 
 #include "helpers/padding.hpp"
+#include "parray.hpp"
 
 namespace pg {
 	/**
@@ -18,8 +19,5 @@ namespace pg {
 			, std::size_t M
 			, std::size_t N
 			>
-	class alignas(boost::simd::pack<T>::alignment) pmat_r : public std::array<T, M * padding::padded_size<T>(N) > {
-	public:
-		static const auto padded_width = padding::padded_size<T>(N);
-	};
+	class alignas(boost::simd::pack<T>::alignment) pmat_r : public std::array<parray<T, N>, M > {};
 }
