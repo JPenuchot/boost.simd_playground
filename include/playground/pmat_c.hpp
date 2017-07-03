@@ -19,8 +19,6 @@ namespace pg {
 			, std::size_t N
 			>
 	class alignas(boost::simd::pack<T>::alignment) pmat_c : public std::array<T, N * padding::padded_size<T>(M) > {
-	private:
-
 	public:
 		static const auto padded_height = padding::padded_size<T>(M);
 	};
