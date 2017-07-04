@@ -1,29 +1,35 @@
-#include <boost/simd/pack.hpp>
-
 #include <iostream>
 #include <algorithm>
 
-#include <playground/pmat_r.hpp>
-#include <playground/algebra/gemv/gemv.hpp>
+#include <boost/simd/pack.hpp>
+#include <boost/simd/reduction.hpp>
 
-#include <cblas.h>
+#include <playground/graphics/types.hpp>
+#include <playground/graphics/algebra/dot.hpp>
+#include <playground/graphics/algebra/matvec.hpp>
+
+//#include <cblas.h>
 
 int main(){
-	pg::pmat_r<float, 10, 10> pmattest;
-	pg::parray<float, 10> parrtest;
+	namespace pgg = pg::graphics;
+	namespace bs = boost::simd;
 
-	std::for_each(pmattest.begin(), pmattest.end(), [](auto& vec){
-		std::transform(vec.begin(), vec.end(), vec.begin(), [](auto elmt){
-			return 1.f;
-		});
-	});
+	pgg::vec4<float> a;
+	
+	a[0] = 1.f;
+	a[1] = 2.f;
+	a[2] = 3.f;
+	a[3] = 4.f;
 
-	std::transform(parrtest.begin(), parrtest.end(), parrtest.begin(), [](auto elmt){
-		return 1.f;
-	});
+	bs::pack<float, 4> ap {1.f};
+	bs::pack<float, 4> bp {2.f};
 
-	auto& restest = pg::algebra::gemv_simd(pmattest, parrtest);
+	//float test = bs::dot(ap, bp);
 
-	for(auto elmt : restest)
-		std::cout << elmt << std::endl;	
+	for(auto val : a) std::cout << val << ";"; std::cout << '\n';
+	
+	pgg::mat4<float> M;
+	std::transform(M.begin(), M.end(), M.begin(), [](auto val){ return 1.f;	});
+	pgg::matvec_c(M, a, a);
+	for(auto val : a) std::cout << val << ";"; std::cout << '\n';
 }
