@@ -9,8 +9,8 @@
 #include <boost/simd/function/dot.hpp>
 #include <boost/simd/function/sum.hpp>
 
-#include "../../parray.hpp"
-#include "../../pvector.hpp"
+#include "../../types/parray.hpp"
+#include "../../types/pvector.hpp"
 
 namespace pg { namespace algebra {
 	namespace bs = boost::simd;
