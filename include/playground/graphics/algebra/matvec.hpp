@@ -71,13 +71,9 @@ namespace pg { namespace graphics {
 		auto v2 = vec_split2_1[0][0];
 		auto v3 = vec_split2_1[1][0];
 
-		auto res1 = 
-			  (c0 * v0)
-			+ (c1 * v1);
-
-		auto res2 =
-			  (c2 * v2)
-			+ (c3 * v3);
+		//	Multiply multiply multiply pultiply...
+		auto res1 = (c0 * v0) + (c1 * v1);
+		auto res2 = (c2 * v2) + (c3 * v3);
 		
 		dest = res1 + res2;
 	}
