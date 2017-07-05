@@ -57,13 +57,15 @@ namespace pg { namespace graphics {
 	inline void matvec_c(const mat4<T>&mat, const vec4<T>& src, vec4<T>& dest){
 		bs::pack<float, 4> psrc(src);
 
+		//	Maybe split 4 pack register into 4 scalars for better pipelining ?
+
 		bs::pack<T, 4> res1 = 
-			  (bs::pack<T, 4>(mat[0]) * psrc[0])
-			+ (bs::pack<T, 4>(mat[4]) * psrc[1]);
+			  (bs::pack<T, 4>(&mat[0]) * psrc[0])
+			+ (bs::pack<T, 4>(&mat[4]) * psrc[1]);
 
 		bs::pack<T, 4> res2 =
-			  (bs::pack<T, 4>(mat[8]) * psrc[2])
-			+ (bs::pack<T, 4>(mat[12]) * psrc[3]);
+			  (bs::pack<T, 4>(&mat[8]) * psrc[2])
+			+ (bs::pack<T, 4>(&mat[12]) * psrc[3]);
 		
 		bs::store(res1 + res2, dest.data());
 	}
