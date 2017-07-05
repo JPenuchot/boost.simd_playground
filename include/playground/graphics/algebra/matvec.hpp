@@ -50,29 +50,29 @@ namespace pg { namespace graphics {
 	 * @tparam     T     Scalar type
 	 */
 	template <typename T>
-	inline void matvec_c(const mat4<T>& mat, const vec4<T>& src, vec4<T>& dest){
+	inline void mult(const mat4<T>& mat, const vec4<T>& src, vec4<T>& dest){
 		//	Split split split split...
 		auto mat_split1 = bs::slice(mat);
 		auto mat_split2_0 = bs::slice(mat_split1[0]);
 		auto mat_split2_1 = bs::slice(mat_split1[1]);
-
-		auto c0 = mat_split2_0[0];
-		auto c1 = mat_split2_0[1];
-		auto c2 = mat_split2_1[0];
-		auto c3 = mat_split2_1[1];
 
 		//	Same on scalar
 		auto vec_split1 = bs::slice(src);
 		auto vec_split2_0 = bs::slice(vec_split1[0]);
 		auto vec_split2_1 = bs::slice(vec_split1[1]);
 
+		auto c0 = mat_split2_0[0];
+		auto c1 = mat_split2_0[1];
 		auto v0 = vec_split2_0[0][0];
 		auto v1 = vec_split2_0[1][0];
+
+		auto res1 = (c0 * v0) + (c1 * v1);
+
+		auto c2 = mat_split2_1[0];
+		auto c3 = mat_split2_1[1];		
 		auto v2 = vec_split2_1[0][0];
 		auto v3 = vec_split2_1[1][0];
-
-		//	Multiply multiply multiply pultiply...
-		auto res1 = (c0 * v0) + (c1 * v1);
+		
 		auto res2 = (c2 * v2) + (c3 * v3);
 		
 		dest = res1 + res2;

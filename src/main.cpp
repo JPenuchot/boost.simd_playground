@@ -11,10 +11,10 @@
 //#include <cblas.h>
 
 int main(){
-	namespace pgg = pg::graphics;
+	using namespace pg::graphics;
 	namespace bs = boost::simd;
 
-	pgg::vec4<float> a{1.f};
+	vec4<float> a{1.f};
 	
 	a[0] = 0.f;
 	a[1] = 2.f;
@@ -24,9 +24,23 @@ int main(){
 	for(auto val : a) std::cout << val << ";";
 		std::cout << '\n';
 	
-	pgg::mat4<float> M;
+	mat4<float> M;
 	std::transform(M.begin(), M.end(), M.begin(), [](auto val){ return 1.f;	});
-	pgg::matvec_c(M, a, a);
+	
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+
+	mult(M, a, a);
+
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	
 	for(auto val : a) std::cout << val << ";";
 		std::cout << '\n';
 }
