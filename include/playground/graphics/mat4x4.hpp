@@ -3,7 +3,7 @@
 
 namespace pg { namespace graphics {
 	template< typename T >
-	class alignas(boost::simd::pack<T>::alignment) mat4 : public std::array<T, 16> {
+	class alignas(boost::simd::pack<T>::alignment) mat4 : public boost::simd::pack<T, 16> {
 		
 	};
 }	}

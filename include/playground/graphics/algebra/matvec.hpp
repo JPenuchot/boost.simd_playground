@@ -4,6 +4,7 @@
 
 #include <boost/simd/pack.hpp>
 #include <boost/simd/function/store.hpp>
+#include <boost/simd/function/split.hpp>
 #include <boost/simd/reduction.hpp>
 
 #include "../types.hpp"
@@ -22,26 +23,21 @@ namespace pg { namespace graphics {
 	 */
 	template <typename T>
 	inline void matvec_r(const mat4<T>&mat, const vec4<T>& src, vec4<T>& dest){
-		bs::pack<T, 4> vec(src);
-		
-		bs::pack<T, 4> resp0(mat.data());
-		bs::pack<T, 4> resp1(&mat.data()[4]);
-		bs::pack<T, 4> resp2(&mat.data()[8]);
-		bs::pack<T, 4> resp3(&mat.data()[12]);
+		//	Split split split split...
+		auto split1 = bs::split(mat);
+		auto split2_0 = bs::split(split1[0]);
+		auto split2_1 = bs::split(split1[1]);
 
-		auto d0 = T(bs::dot(src, resp0));
-		auto d1 = T(bs::dot(src, resp1));
-		auto d2 = T(bs::dot(src, resp2));
-		auto d3 = T(bs::dot(src, resp3));
+		auto r0 = split2_0[0];
+		auto r1 = split2_0[1];
+		auto r2 = split2_1[0];
+		auto r3 = split2_1[1];
 
-		bs::pack<T, 4> dst;
-
-		dst[0] = d0;
-		dst[1] = d1;
-		dst[2] = d2;
-		dst[3] = d3;
-
-		bs::store(dst, dest.data());
+		//	Dot dot dot dot...
+		dest[0] = bs::dot(r0, src);
+		dest[1] = bs::dot(r1, src);
+		dest[2] = bs::dot(r2, src);
+		dest[3] = bs::dot(r3, src);
 	}
 
 	/**
@@ -55,18 +51,34 @@ namespace pg { namespace graphics {
 	 */
 	template <typename T>
 	inline void matvec_c(const mat4<T>&mat, const vec4<T>& src, vec4<T>& dest){
-		bs::pack<float, 4> psrc(src);
+		//	Split split split split...
+		auto mat_split1 = bs::split(mat);
+		auto mat_split2_0 = bs::split(mat_split1[0]);
+		auto mat_split2_1 = bs::split(mat_split1[1]);
 
-		//	Maybe split 4 pack register into 4 scalars for better pipelining ?
+		auto c0 = mat_split2_0[0];
+		auto c1 = mat_split2_0[1];
+		auto c2 = mat_split2_1[0];
+		auto c3 = mat_split2_1[1];
+
+		//	Same on scalar
+		auto vec_split1 = bs::split(src);
+		auto vec_split2_0 = bs::split(vec_split1[0]);
+		auto vec_split2_1 = bs::split(vec_split1[1]);
+
+		auto v0 = vec_split2_0[0];
+		auto v1 = vec_split2_0[1];
+		auto v2 = vec_split2_1[0];
+		auto v3 = vec_split2_1[1];
 
 		bs::pack<T, 4> res1 = 
-			  (bs::pack<T, 4>(&mat[0]) * psrc[0])
-			+ (bs::pack<T, 4>(&mat[4]) * psrc[1]);
+			  (bs::pack<T, 4>(&mat[0]) * v0)
+			+ (bs::pack<T, 4>(&mat[4]) * v1);
 
 		bs::pack<T, 4> res2 =
-			  (bs::pack<T, 4>(&mat[8]) * psrc[2])
-			+ (bs::pack<T, 4>(&mat[12]) * psrc[3]);
+			  (bs::pack<T, 4>(&mat[8]) * v2)
+			+ (bs::pack<T, 4>(&mat[12]) * v3);
 		
-		bs::store(res1 + res2, dest.data());
+		dest = res1 + res2;
 	}
 }	}

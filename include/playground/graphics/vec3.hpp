@@ -3,5 +3,5 @@
 
 namespace pg { namespace graphics {
 	template< typename T >
-	class alignas(boost::simd::pack<T>::alignment) vec3 : public std::array<T, 4> {};
+	class alignas(boost::simd::pack<T>::alignment) vec3 : public boost::simd::pack<T, 4> {};
 }	}
