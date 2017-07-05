@@ -2,5 +2,5 @@
 
 namespace pg { namespace graphics {
 	template< typename T >
-	class vec3 : public boost::simd::pack<T, 4> {};
+	using vec3 = boost::simd::pack<T, 4>;
 }	}

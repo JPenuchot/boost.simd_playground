@@ -2,7 +2,5 @@
 
 namespace pg { namespace graphics {
 	template< typename T >
-	class mat4 : public boost::simd::pack<T, 16> {
-		
-	};
+	using mat4 = boost::simd::pack<T, 16>;
 }	}

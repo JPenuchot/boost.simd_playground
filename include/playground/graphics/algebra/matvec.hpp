@@ -22,22 +22,22 @@ namespace pg { namespace graphics {
 	 * @tparam     T     Scalar type
 	 */
 	template <typename T>
-	inline void matvec_r(const mat4<T>&mat, const vec4<T>& src, vec4<T>& dest){
+	inline void matvec_r(const mat4<T>& mat, const vec4<T>& src, vec4<T>& dest){
 		//	Split split split split...
-		auto split1 = bs::split(mat);
-		auto split2_0 = bs::split(split1[0]);
-		auto split2_1 = bs::split(split1[1]);
+		auto split1 = bs::slice(mat);
+		auto split2_0 = bs::slice(split1[0]);
+		auto split2_1 = bs::slice(split1[1]);
 
-		auto r0 = split2_0[0];
-		auto r1 = split2_0[1];
-		auto r2 = split2_1[0];
-		auto r3 = split2_1[1];
+		auto mat0 = split2_0[0];
+		auto mat1 = split2_0[1];
+		auto mat2 = split2_1[0];
+		auto mat3 = split2_1[1];
 
 		//	Dot dot dot dot...
-		dest[0] = bs::dot(r0, src);
-		dest[1] = bs::dot(r1, src);
-		dest[2] = bs::dot(r2, src);
-		dest[3] = bs::dot(r3, src);
+		dest[0] = bs::dot(mat0, src);
+		dest[1] = bs::dot(mat1, src);
+		dest[2] = bs::dot(mat2, src);
+		dest[3] = bs::dot(mat3, src);
 	}
 
 	/**
@@ -50,11 +50,11 @@ namespace pg { namespace graphics {
 	 * @tparam     T     Scalar type
 	 */
 	template <typename T>
-	inline void matvec_c(const mat4<T>&mat, const vec4<T>& src, vec4<T>& dest){
+	inline void matvec_c(const mat4<T>& mat, const vec4<T>& src, vec4<T>& dest){
 		//	Split split split split...
-		auto mat_split1 = bs::split(mat);
-		auto mat_split2_0 = bs::split(mat_split1[0]);
-		auto mat_split2_1 = bs::split(mat_split1[1]);
+		auto mat_split1 = bs::slice(mat);
+		auto mat_split2_0 = bs::slice(mat_split1[0]);
+		auto mat_split2_1 = bs::slice(mat_split1[1]);
 
 		auto c0 = mat_split2_0[0];
 		auto c1 = mat_split2_0[1];
@@ -62,22 +62,22 @@ namespace pg { namespace graphics {
 		auto c3 = mat_split2_1[1];
 
 		//	Same on scalar
-		auto vec_split1 = bs::split(src);
-		auto vec_split2_0 = bs::split(vec_split1[0]);
-		auto vec_split2_1 = bs::split(vec_split1[1]);
+		auto vec_split1 = bs::slice(src);
+		auto vec_split2_0 = bs::slice(vec_split1[0]);
+		auto vec_split2_1 = bs::slice(vec_split1[1]);
 
-		auto v0 = vec_split2_0[0];
-		auto v1 = vec_split2_0[1];
-		auto v2 = vec_split2_1[0];
-		auto v3 = vec_split2_1[1];
+		auto v0 = vec_split2_0[0][0];
+		auto v1 = vec_split2_0[1][0];
+		auto v2 = vec_split2_1[0][0];
+		auto v3 = vec_split2_1[1][0];
 
-		bs::pack<T, 4> res1 = 
-			  (bs::pack<T, 4>(&mat[0]) * v0)
-			+ (bs::pack<T, 4>(&mat[4]) * v1);
+		auto res1 = 
+			  (c0 * v0)
+			+ (c1 * v1);
 
-		bs::pack<T, 4> res2 =
-			  (bs::pack<T, 4>(&mat[8]) * v2)
-			+ (bs::pack<T, 4>(&mat[12]) * v3);
+		auto res2 =
+			  (c2 * v2)
+			+ (c3 * v3);
 		
 		dest = res1 + res2;
 	}
