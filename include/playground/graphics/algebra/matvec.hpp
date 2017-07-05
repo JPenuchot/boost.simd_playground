@@ -24,24 +24,24 @@ namespace pg { namespace graphics {
 	inline void matvec_r(const mat4<T>&mat, const vec4<T>& src, vec4<T>& dest){
 		bs::pack<T, 4> vec(src);
 		
-		bs::pack<T, 4> resp0(mat[0]);
-		bs::pack<T, 4> resp1(mat[4]);
-		bs::pack<T, 4> resp2(mat[8]);
-		bs::pack<T, 4> resp3(mat[12]);
+		bs::pack<T, 4> resp0(mat.data());
+		bs::pack<T, 4> resp1(&mat.data()[4]);
+		bs::pack<T, 4> resp2(&mat.data()[8]);
+		bs::pack<T, 4> resp3(&mat.data()[12]);
 
-		auto d0 = bs::dot(resp0, src);
-		auto d1 = bs::dot(resp1, src);
-		auto d2 = bs::dot(resp2, src);
-		auto d3 = bs::dot(resp3, src);
+		auto d0 = T(bs::dot(src, resp0));
+		auto d1 = T(bs::dot(src, resp1));
+		auto d2 = T(bs::dot(src, resp2));
+		auto d3 = T(bs::dot(src, resp3));
 
 		bs::pack<T, 4> dst;
 
 		dst[0] = d0;
-		//dst[1] = d1;
-		//dst[2] = d2;
-		//dst[3] = d3;
+		dst[1] = d1;
+		dst[2] = d2;
+		dst[3] = d3;
 
-		//bs::store(dst, dest.data());
+		bs::store(dst, dest.data());
 	}
 
 	/**
