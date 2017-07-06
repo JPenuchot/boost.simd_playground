@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ORIGIN=$(pwd)
+
 EXTLIB_FOLDER="ext/"
 
 echo
@@ -57,3 +59,13 @@ git clone https://github.com/xianyi/OpenBLAS
 cd OpenBLAS
 make
 make install PREFIX=./
+
+cd ${ORIGIN}
+
+# fast-asm-compare
+
+git clone https://github.com/jpenuchot/fast-asm-compare
+cd fast-asm-compare/ext
+ln -s ../../ext/* .
+cd ../
+ln -s ../examples/compare/* .
