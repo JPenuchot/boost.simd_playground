@@ -22,7 +22,7 @@ namespace pg { namespace graphics {
 	 * @tparam     T     Numeric type
 	 */
 	template <typename T>
-	inline void mult3(const mat3<T>& mat, const vec3<T>& src, vec3<T>& dest){
+	BOOST_FORCEINLINE void mult3(const mat3<T>& mat, const vec3<T>& src, vec3<T>& dest){
 		//	Split split split split...
 		auto mat_split1 = bs::slice(mat);
 		auto mat_split2_0 = bs::slice(mat_split1[0]);
@@ -51,7 +51,7 @@ namespace pg { namespace graphics {
 	 * @tparam     T     Numeric type
 	 */
 	template <typename T>
-	inline void mult4(const mat4<T>& mat, const vec4<T>& src, vec4<T>& dest){
+	BOOST_FORCEINLINE void mult4(const mat4<T>& mat, const vec4<T>& src, vec4<T>& dest){
 		//	Split split split split...
 		auto mat_split1 = bs::slice(mat);
 		auto mat_split2_0 = bs::slice(mat_split1[0]);
