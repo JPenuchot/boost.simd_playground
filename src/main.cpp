@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <algorithm>
 
@@ -33,7 +34,7 @@ int main(){
 	asm("nop");
 	asm("nop");
 
-	mult(M, a, a);
+	mult4(M, a, a);
 
 	asm("nop");
 	asm("nop");

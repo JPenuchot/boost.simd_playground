@@ -25,7 +25,7 @@ int main(){
 	
 	IACA_START
 
-	mult(M, a, a);
+	mult4(M, a, a);
 
 	IACA_END
 
