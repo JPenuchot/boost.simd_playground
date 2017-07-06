@@ -18,7 +18,7 @@ namespace pg { namespace graphics {
 	}
 
 	template <typename T>
-	inline void mult4(const mat4<T>& A, const mat4<T>& B, mat4<T>& dest){
+	BOOST_FORCEINLINE void mult4(const mat4<T>& A, const mat4<T>& B, mat4<T>& dest){
 		//	Slice slice slice slice...
 		auto B__0 = bs::slice_low(B);
 		auto B__1 = bs::slice_high(B);
@@ -30,36 +30,11 @@ namespace pg { namespace graphics {
 		
 		//	Compute compute compute compute...
 
-		//	res0
-		auto res0 =
-			vec4<T>(A[0]) * B0 +
-			vec4<T>(A[1]) * B1 +
-			vec4<T>(A[2]) * B2 +
-			vec4<T>(A[3]) * B3;
+		auto res0 = A[0] * B0 + A[1] * B1 + A[2] * B2 + A[3] * B3;
+		auto res1 = A[4] * B0 + A[5] * B1 + A[6] * B2 + A[7] * B3;
+		auto res2 = A[8] * B0 + A[9] * B1 + A[10] * B2 + A[11] * B3;
+		auto res3 = A[12] * B0 + A[13] * B1 + A[14] * B2 + A[15] * B3;
 
-		//	res1
-		auto res1 =
-			vec4<T>(A[4]) * B0 +
-			vec4<T>(A[5]) * B1 +
-			vec4<T>(A[6]) * B2 +
-			vec4<T>(A[7]) * B3;
-
-		//	res2
-		auto res2 =
-			vec4<T>(A[8]) * B0 +
-			vec4<T>(A[9]) * B1 +
-			vec4<T>(A[10]) * B2 +
-			vec4<T>(A[11]) * B3;
-
-		//	res3
-		auto res3 =
-			vec4<T>(A[12]) * B0 +
-			vec4<T>(A[13]) * B1 +
-			vec4<T>(A[14]) * B2 +
-			vec4<T>(A[15]) * B3;
-
-		dest = bs::combine(
-				bs::combine(res0, res1),
-				bs::combine(res2, res3));
+		dest = bs::combine(bs::combine(res0, res1), bs::combine(res2, res3));
 	}
 }	}
