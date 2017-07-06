@@ -6,8 +6,12 @@
 #include <boost/simd/reduction.hpp>
 
 #include <playground/graphics/types.hpp>
+
+#include <playground/graphics/memory/load.hpp>
+
 #include <playground/graphics/algebra/dot.hpp>
 #include <playground/graphics/algebra/matvec.hpp>
+#include <playground/graphics/algebra/matmat.hpp>
 
 //#include <cblas.h>
 
@@ -15,33 +19,28 @@ int main(){
 	using namespace pg::graphics;
 	namespace bs = boost::simd;
 
-	vec4<float> a{1.f};
-	
-	a[0] = 0.f;
-	a[1] = 2.f;
-	a[2] = 3.f;
-	a[3] = 4.f;
+	float arr[16] = {
+		0.f,
+		1.f,
+		2.f,
+		3.f,
+		4.f,
+		5.f,
+		6.f,
+		7.f,
+		8.f,
+		9.f,
+		10.f,
+		11.f,
+		12.f,
+		13.f,
+		14.f,
+		15.f
+	};
 
-	for(auto val : a) std::cout << val << ";";
-		std::cout << '\n';
-	
-	mat4<float> M;
-	std::transform(M.begin(), M.end(), M.begin(), [](auto val){ return 1.f;	});
-	
-	asm("nop");
-	asm("nop");
-	asm("nop");
-	asm("nop");
-	asm("nop");
+	mat4<float> A(arr);
 
-	mult4(M, a, a);
+	pg::graphics::mult4(A, A, A);
 
-	asm("nop");
-	asm("nop");
-	asm("nop");
-	asm("nop");
-	asm("nop");
-	
-	for(auto val : a) std::cout << val << ";";
-		std::cout << '\n';
+	std::cout << A << '\n';
 }
