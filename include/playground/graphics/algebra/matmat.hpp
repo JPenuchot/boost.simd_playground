@@ -14,7 +14,21 @@ namespace pg { namespace graphics {
 	
 	template <typename T>
 	inline void mult3(const mat3<T>& A, const mat3<T>& B, mat3<T>& dest){
-		//	TODO
+		//	Slice slice slice slice...
+		auto B__0 = bs::slice_low(B);
+		auto B__1 = bs::slice_high(B);
+
+		auto B0 = bs::slice_low(B__0);
+		auto B1 = bs::slice_high(B__0);
+		auto B2 = bs::slice_low(B__1);
+		
+		//	Compute compute compute compute...
+
+		auto res0 = A[0] * B0 + A[1] * B1 + A[2] * B2;
+		auto res1 = A[4] * B0 + A[5] * B1 + A[6] * B2;
+		auto res2 = A[8] * B0 + A[9] * B1 + A[10] * B2;
+
+		dest = bs::combine(bs::combine(res0, res1), bs::combine(res2, vec3<T>(T(0))));
 	}
 
 	template <typename T>
