@@ -27,7 +27,7 @@ namespace pg { namespace graphics {
 		vec4<T> res3;
 
 		//	Goin' fast
-		for(;a_start + 16 < a_end; a_start += 4, b_start += 4){
+		for(;a_start + 16 < a_end; a_start += 16, b_start += 16){
 			mult4(vec4<T>(a_start), mat, res0);
 			mult4(vec4<T>(&a_start[4]), mat, res1);
 			mult4(vec4<T>(&a_start[8]), mat, res2);
@@ -62,7 +62,7 @@ namespace pg { namespace graphics {
 		vec4<T> res3;
 
 		//	Goin' fast
-		for(;a_start + 16 < a_end; a_start += 4, b_start += 4){
+		for(;a_start + 16 < a_end; a_start += 16, b_start += 16){
 			mult4(vec4<T>(a_start), mat, res0);
 			mult4(vec4<T>(&a_start[4]), mat, res1);
 			mult4(vec4<T>(&a_start[8]), mat, res2);
@@ -72,7 +72,6 @@ namespace pg { namespace graphics {
 			bs::store(res1, &b_start[4]);
 			bs::store(res2, &b_start[8]);
 			bs::store(res3, &b_start[12]);
-
 		}
 		
 		for(;a_start + 4 < a_end; a_start += 4, b_start += 4){
