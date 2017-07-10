@@ -29,13 +29,10 @@ namespace pg { namespace graphics {
 		//	Getting our 4 vec3 into 3 pack<T, 4>
 		namespace bs = boost::simd;
 
-		//bs::pack<T, 8> pp0(data);
-
 		bs::pack<T, 4> p0(data);
 		bs::pack<T, 4> p1(&data[4]);
 		bs::pack<T, 4> p2(&data[8]);
 
-		//	Everyday I'm shufflin' (Sorry port #5 :'( )
 		pd1 = bs::slide<3>(p0, p1);
 		pd2 = bs::slide<2>(p1, p2);
 		pd0 = p0;
@@ -47,8 +44,6 @@ namespace pg { namespace graphics {
 		//	Getting our 4 vec3 into 3 pack<T, 4>
 		namespace bs = boost::simd;
 
-		bs::pack<T, 8> pp0(data);
-
 		bs::pack<T, 4> p0(data);
 		bs::pack<T, 4> p1(&data[4]);
 		auto p2 = data[8];
@@ -57,6 +52,17 @@ namespace pg { namespace graphics {
 		pd1 = bs::slide<3>(p0, p1);
 		pd2 = bs::slide<2>(p1, p2);
 		pd2[3] = p2;
+	}
+
+	template <typename T>
+	BOOST_FORCEINLINE void load(T* data, vec3<T>& pd0, vec3<T>& pd1){
+		namespace bs = boost::simd;
+		
+		bs::pack<T, 4> p0(data);
+		bs::pack<T, 4> p1(&data[4]);
+
+		pd0 = p0;
+		pd1 = bs::slide<3>(p0, p1);
 	}
 
 	/**
