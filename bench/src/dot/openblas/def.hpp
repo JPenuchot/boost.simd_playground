@@ -1,7 +1,7 @@
 #include <benchmark/benchmark_api.h>
 
-#include <playground/parray.hpp>
-#include <playground/pvector.hpp>
+#include <playground/types/parray.hpp>
+#include <playground/types/pvector.hpp>
 
 #include <cblas.h>
 
