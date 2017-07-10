@@ -6,6 +6,12 @@
 
 #include "def.hpp"
 
+#ifdef BENCH_DOUBLE
+	using btype = double;
+#else
+	using btype = float;
+#endif
+
 #define BM_DOT_BLAS(size) \
-	BM_DOT_PVECTOR_OPENBLAS(size)
+	BENCHMARK_TEMPLATE(dot__pvector__openblas, float, size);
 	
