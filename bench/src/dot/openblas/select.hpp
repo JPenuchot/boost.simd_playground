@@ -6,6 +6,6 @@
 
 #include "def.hpp"
 
-#define BM_DOT_BLAS(size) \
-	BM_DOT_PVECTOR_OPENBLAS(size)
+#define BM_DOT_BLAS(type, size) \
+	BENCHMARK_TEMPLATE(dot__pvector__openblas, type, size);
 	

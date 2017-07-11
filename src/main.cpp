@@ -1,37 +1,42 @@
+
 #include <iostream>
 #include <algorithm>
+#include <array>
+#include <numeric>
 
 #include <boost/simd/pack.hpp>
 #include <boost/simd/reduction.hpp>
 
 #include <playground/graphics/types.hpp>
-#include <playground/graphics/algebra/dot.hpp>
-#include <playground/graphics/algebra/matvec.hpp>
 
-//#include <cblas.h>
+#include <playground/graphics/algebra/batch/matvec.hpp>
+
+//#include <iacaMarks.h>
 
 int main(){
-	namespace pgg = pg::graphics;
+	using namespace pg::graphics;
 	namespace bs = boost::simd;
 
-	pgg::vec4<float> a;
-	
-	a[0] = 1.f;
-	a[1] = 2.f;
-	a[2] = 3.f;
-	a[3] = 4.f;
+	alignas(32) std::array<float, 4 * 1024> vecs;
+	std::iota(vecs.begin(), vecs.end(), 1.f);
 
-	bs::pack<float, 4> ap {1.f};
-	bs::pack<float, 4> bp {2.f};
+	mat4<float> A{
+		1.f, 2.f, 3.f, 4.f,
+		5.f, 6.f, 7.f, 8.f,
+		9.f, 10.f, 11.f, 12.f,
+		13.f, 14.f, 15.f, 16.f
+	};
 
-	float test = bs::dot(ap, bp);
+	mat4<float> B;
 
-	for(auto val : a) std::cout << val << ";";
-		std::cout << '\n';
-	
-	pgg::mat4<float> M;
-	std::transform(M.begin(), M.end(), M.begin(), [](auto val){ return 1.f;	});
-	pgg::matvec_r(M, a, a);
-	for(auto val : a) std::cout << val << ";";
-		std::cout << '\n';
+	std::cout << A;
+
+	transpose4(A, B);
+
+	std::cout << B;
+
+	batch_matvec4(A, vecs.data(), 1024, vecs.data());
+
+	//for(auto a : vecs) std::cout << a << ", ";
+
 }

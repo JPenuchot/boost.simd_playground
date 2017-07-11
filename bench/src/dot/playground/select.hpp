@@ -6,23 +6,26 @@
 
 #include "def.hpp"
 
-#define BM_DOT_PARRAY(size) \
-	BM_DOT_PARRAY_SIMD(size) \
-	BM_DOT_PARRAY_SIMD_INNER(size) \
-	BM_DOT_PARRAY_DUMB(size)
+#define BM_DOT_PARRAY(type, size) \
+	BENCHMARK_TEMPLATE(dot__parray__dumb, type, size); \
+	BENCHMARK_TEMPLATE(dot__parray__simd, type, size); \
+	BENCHMARK_TEMPLATE(dot__parray__simd_inner, type, size);
 	
 	//BM_DOT_PARRAY_SIMD_2U(size)
 	//BM_DOT_PARRAY_SIMD_FU(size)
 	//BM_DOT_PARRAY_SIMD_UNSAFE(size)
 
-#define BM_DOT_PVECTOR(size) \
-	BM_DOT_PVECTOR_DUMB(size) \
-	BM_DOT_PVECTOR_SIMD_INNER(size) \
-	BM_DOT_PVECTOR_SIMD(size)
+#define BM_DOT_PVECTOR(type, size) \
+	BENCHMARK_TEMPLATE(dot__pvector__dumb, type, size); \
+	BENCHMARK_TEMPLATE(dot__pvector__simd, type, size); \
+	BENCHMARK_TEMPLATE(dot__pvector__simd_inner, type, size);
+	
+
+	//	Unusable until fixed
 	
 	//BM_DOT_PVECTOR_SIMD_VERSION(size, 1)
 	//BM_DOT_PVECTOR_SIMD_VERSION(size, 2)
 
-#define BM_DOT_JPENUCHOT(size) \
-	BM_DOT_PVECTOR(size)
-	//BM_DOT_PARRAY(size)
+#define BM_DOT_JPENUCHOT(type, size) \
+	BM_DOT_PVECTOR(type, size)
+	//BM_DOT_PARRAY(type, size)
