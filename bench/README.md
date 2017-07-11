@@ -1,20 +1,12 @@
 # Bench
 
-This folder provides a set of tools to run benchmarks on different platforms automatically with automated plot (on the way).
+This folder provides a set of tools to run benchmarks on different platforms automatically with automated plot.
 
-Benchmark architectures and types (float/double) are defined in CMakeLists.txt whereas benchmark sizes are defined in src/main.cpp.
-
-You can enable/disable benchmark by commenting them neatly in \[operation_name\]_select.hpp. Just don't break it or the compiler will puke at your face.
+Benchmark architectures are defined in the CMakeLists.txt file, the rest is contained in the C++ code under `src/[CATEGORY]/[LIBRARY]/*.hpp` where def.hpp files are where benchmark code is defined whereas select.hpp is where benches are enabled/disabled.
 
 ## Writing benches
 
-All benches must bee written following the same rules :
-
-- Code is generated using macros that accept a "size" parameter
-- Benchmark function names must be formatted as ```[operation]__[type]__[method]__##size```
-- Macro name must be formatted as ```BM_[operation]_[type]_[method]```
-
-Be careful to respect the function name formatting as it will then be parsed according to this format.
+After a re-design, benches have been updated and now use templates rather than macros. Naming convention is now : `[category]__[data structure]__[method]` with a template that starts with a typename.
 
 ## Automatic plotting
 

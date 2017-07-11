@@ -1,4 +1,4 @@
-#include <benchmark/benchmark_api.h>
+#include <benchmark/benchmark.h>
 
 #include <playground/types/parray.hpp>
 #include <playground/types/pvector.hpp>
