@@ -10,6 +10,6 @@ After a re-design, benches have been updated and now use templates rather than m
 
 ## Automatic plotting
 
-Because why the hell not ?
+##### Warning : Recent changes broke automatic plotting, don't be scared if you get scary error messages when using `run_benches`
 
 Install "plotter" using npm, make sure gnuplot is installed on your machine and you're ready to go. Benchmark graphs are generated automatically with ```run_benches```.
