@@ -18,24 +18,29 @@
  *		- 30720K	L3
  */
 
+#define BM_DOT_SIZE(size) \
+	BM_DOT_JPENUCHOT(type, size) \
+	BM_DOT_BLAS(type, size)
+
+
 #ifdef BENCH_DOUBLE
 
 	#define BM_DOT \
-			BM_DOT_SIZE(double, 2) \
-			BM_DOT_SIZE(double, 256) \
-			BM_DOT_SIZE(double, 1024) \
-			\
-			BM_DOT_SIZE(double, 2048) \
-			BM_DOT_SIZE(double, 4096) \
-			BM_DOT_SIZE(double, 16384) \
-			\
-			BM_DOT_SIZE(double, 262144) \
-			BM_DOT_SIZE(double, 983040) \
-			BM_DOT_SIZE(double, 1966080) \
-			\
-			BM_DOT_SIZE(double, 16777216) \
-			BM_DOT_SIZE(double, 67108864) \
-			BM_DOT_SIZE(double, 268435456)
+		BM_DOT_SIZE(double, 2) \
+		BM_DOT_SIZE(double, 256) \
+		BM_DOT_SIZE(double, 1024) \
+		\
+		BM_DOT_SIZE(double, 2048) \
+		BM_DOT_SIZE(double, 4096) \
+		BM_DOT_SIZE(double, 16384) \
+		\
+		BM_DOT_SIZE(double, 262144) \
+		BM_DOT_SIZE(double, 983040) \
+		BM_DOT_SIZE(double, 1966080) \
+		\
+		BM_DOT_SIZE(double, 16777216) \
+		BM_DOT_SIZE(double, 67108864) \
+		BM_DOT_SIZE(double, 268435456)
 
 #else
 
@@ -57,7 +62,3 @@
 		BM_DOT_SIZE(float, 536870912)
 
 #endif
-
-#define BM_DOT_SIZE(size) \
-	BM_DOT_JPENUCHOT(type, size) \
-	BM_DOT_BLAS(type, size)
