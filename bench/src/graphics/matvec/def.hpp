@@ -11,6 +11,8 @@
 
 #include <playground/graphics/algebra/matvec.hpp>
 
+#include "../dumb_versions.hpp"
+
 namespace pgg = pg::graphics;
 
 template <typename T>

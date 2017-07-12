@@ -1,7 +1,7 @@
 #include <benchmark/benchmark.h>
 
-#include <playground/types/parray.hpp>
-#include <playground/types/pvector.hpp>
+#include <playground/parray.hpp>
+#include <playground/pvector.hpp>
 
 #include <numeric>
 
