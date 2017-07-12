@@ -6,7 +6,8 @@
 
 #define BM_GRAPHICS \
 	BM_MATVEC(float) \
-	BM_VECMAT(float)
+	BM_VECMAT(float) \
+	BM_BATCH(float)
 	
 	//BM_MATVEC(double)
 	//BM_VECMAT(double)
