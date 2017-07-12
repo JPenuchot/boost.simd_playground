@@ -16,8 +16,8 @@
 #include <boost/simd/range/segmented_aligned_range.hpp>
 
 
-#include "../types/parray.hpp"
-#include "../types/pvector.hpp"
+#include "../parray.hpp"
+#include "../pvector.hpp"
 
 namespace jp { namespace algebra {
 	namespace bs = boost::simd;

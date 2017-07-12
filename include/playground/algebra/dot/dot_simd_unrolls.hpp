@@ -3,8 +3,8 @@
 #include <boost/simd/pack.hpp>
 #include <boost/simd/reduction.hpp>
 
-#include "../../types/parray.hpp"
-#include "../../types/pvector.hpp"
+#include "../../parray.hpp"
+#include "../../pvector.hpp"
 
 namespace pg { namespace algebra {
 	namespace bs = boost::simd;

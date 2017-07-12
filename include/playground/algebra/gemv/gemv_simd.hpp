@@ -4,9 +4,9 @@
 
 #include <algorithm>
 
-#include "../../types/parray.hpp"
-#include "../../types/pmat_r.hpp"
-#include "../../types/pmat_c.hpp"
+#include "../../parray.hpp"
+#include "../../pmat_r.hpp"
+#include "../../pmat_c.hpp"
 
 #include "../dot/dot.hpp"
 

@@ -13,25 +13,9 @@
 
 namespace pgg = pg::graphics;
 
-/**
- * @brief      Dumb reference for matvec product
- *
- * @param      mat   The matrix
- * @param      vec   The vector
- * @param      res   The result
- *
- * @tparam     T     Type
- * @tparam     N     Size
- */
-template <typename T, std::size_t N>
-void matvec_dumb(std::array<std::array<T, N>, N>& mat, std::array<T, N>&vec, std::array<T, N>& res){
-	for(std::size_t i = 0; i < N; i++)
-		res[i] = std::inner_product(vec.begin(), vec.end(), mat[i].begin(), T(0));
-}
-
 template <typename T>
 static void matvec__matvec4__dumb (benchmark::State& state){
-	std::array<std::array<T, 4>, 4> mat = {
+	std::array<std::array<T, 4>, 4> mat {
 		T(1), T(2), T(3), T(4),
 		T(5), T(6), T(7), T(8),
 		T(9), T(10), T(11), T(12),
@@ -46,9 +30,9 @@ static void matvec__matvec4__dumb (benchmark::State& state){
 
 template <typename T>
 static void matvec__matvec4__simd (benchmark::State& state){
-	pgg::vec4<T> vec = { T(1), T(2), T(3), T(4) };
+	pgg::vec4<T> vec { T(1), T(2), T(3), T(4) };
 
-	pgg::mat4<T> mat = {
+	pgg::mat4<T> mat {
 		T(1), T(2), T(3), T(4),
 		T(5), T(6), T(7), T(8),
 		T(9), T(10), T(11), T(12),

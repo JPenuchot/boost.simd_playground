@@ -2,8 +2,8 @@
 
 #include <numeric>
 
-#include "../../types/parray.hpp"
-#include "../../types/pvector.hpp"
+#include "../../parray.hpp"
+#include "../../pvector.hpp"
 
 namespace pg { namespace algebra {
 	template< typename T
