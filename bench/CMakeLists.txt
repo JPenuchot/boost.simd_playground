@@ -23,6 +23,7 @@ include_directories(
 	"../ext/boost.simd/include"
 	"../ext/benchmark/include"
 	"../ext/OpenBLAS/include"
+	"../ext/glm"
 	"../include"
 )
 
@@ -45,16 +46,9 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 # Iterating over architectures
 foreach(BARCH ${BENCH_ARCHS})
 
-	# Building single precision bench
-	set(TNAME "bench_${BARCH}_float")
+	set(TNAME "bench_${BARCH}")
 	add_executable(${TNAME} ${SOURCES})
 	set_target_properties(${TNAME}
 		PROPERTIES COMPILE_FLAGS " -m${BARCH}")
-
-	# Building double precision bench
-	set(TNAME "bench_${BARCH}_double")
-	add_executable(${TNAME} ${SOURCES})
-	set_target_properties(${TNAME}
-		PROPERTIES COMPILE_FLAGS " -m${BARCH} -DBENCH_DOUBLE")
 
 endforeach(BARCH)

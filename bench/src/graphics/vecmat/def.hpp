@@ -11,6 +11,8 @@
 
 #include <playground/graphics/algebra/vecmat.hpp>
 
+#include <glm/glm.hpp>
+
 #include "../dumb_versions.hpp"
 
 namespace pgg = pg::graphics;
@@ -26,14 +28,14 @@ static void vecmat__vecmat4__dumb (benchmark::State& state){
 
 	std::array<T, 4> vec = { T(1), T(2), T(3), T(4) };
 	
-	while(state.KeepRunning())
+	while(state.KeepRunning()){
 		vecmat_dumb(vec, mat, vec);
+		benchmark::DoNotOptimize(vec);
+	}
 }
 
 template <typename T>
 static void vecmat__vecmat4__simd (benchmark::State& state){
-	pgg::vec4<T> vec { T(1), T(2), T(3), T(4) };
-
 	pgg::mat4<T> mat {
 		T(1),	T(2),	T(3),	T(4),
 		T(5),	T(6),	T(7),	T(8),
@@ -41,15 +43,27 @@ static void vecmat__vecmat4__simd (benchmark::State& state){
 		T(13),	T(14),	T(15),	T(16)
 	};
 
-	while(state.KeepRunning())
+	pgg::vec4<T> vec { T(1), T(2), T(3), T(4) };
+
+	while(state.KeepRunning()){
 		pgg::mult4(vec, mat, vec);
+		benchmark::DoNotOptimize(vec);
+	}
 }
 
 template <typename T>
 static void vecmat__vecmat4__glm (benchmark::State& state){
-	//	Prepare
+	glm::mat4 mat {
+		T(1), T(2), T(3), T(4),
+		T(5), T(6), T(7), T(8),
+		T(9), T(10), T(11), T(12),
+		T(13), T(14), T(15), T(16)
+	};
+
+	glm::vec4 vec { T(1), T(2), T(3), T(4) };
+
 	while(state.KeepRunning()){
-		//	Run
+		benchmark::DoNotOptimize(vec = vec * mat);
 	}
 }
 
