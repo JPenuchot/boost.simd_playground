@@ -35,6 +35,11 @@ cd ${EXTLIB_FOLDER}
 
 git clone https://github.com/numscale/boost.simd
 
+# glm
+
+git clone https://github.com/g-truc/glm/
+
+
 # boost 1.64.0
 
 wget https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.gz
