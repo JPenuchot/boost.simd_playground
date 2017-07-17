@@ -2,6 +2,10 @@
 
 #include <iostream>
 
+#ifdef FASMCMP
+	#include <iacaMarks.h>
+#endif
+
 #include "../../types.hpp"
 #include "../vecmat.hpp"
 #include "../../helper/transpose.hpp"
@@ -10,7 +14,7 @@ namespace pg { namespace graphics {
 	namespace bs = boost::simd;
 
 	template <typename T>
-	void batch3(mat3<T>& mat, vec3<T>* src, std::size_t size, T* dest){
+	BOOST_FORCEINLINE void batch3(mat3<T>& mat, vec3<T>* src, std::size_t size, T* dest){
 		//	TODO
 	}
 
@@ -25,7 +29,7 @@ namespace pg { namespace graphics {
 	 * @tparam     T     Type
 	 */
 	template <typename T>
-	void batch_vecmat4(mat4<T>& mat, T* src, std::size_t size, T* dest){
+	BOOST_FORCEINLINE void batch_vecmat4(mat4<T>& mat, T* src, std::size_t size, T* dest){
 		auto& a_start = src;
 		auto& b_start = dest;
 
@@ -38,6 +42,10 @@ namespace pg { namespace graphics {
 
 		//	Goin' fast
 		for(;a_start + 16 <= a_end; a_start += 16, b_start += 16){
+			#ifdef FASMCMP
+				IACA_START
+			#endif
+
 			mult4(vec4<T>(a_start), mat, res0);
 			mult4(vec4<T>(&a_start[4]), mat, res1);
 			mult4(vec4<T>(&a_start[8]), mat, res2);
@@ -49,6 +57,10 @@ namespace pg { namespace graphics {
 			bs::store(res3, &b_start[12]);
 
 		}
+
+		#ifdef FASMCMP
+			IACA_END
+		#endif
 
 		for(;a_start + 4 <= a_end; a_start += 4, b_start += 4){
 			mult4(vec4<T>(a_start), mat, res0);
@@ -67,7 +79,7 @@ namespace pg { namespace graphics {
 	 * @tparam     T     Type
 	 */
 	template <typename T>
-	void batch_matvec4(mat4<T>& mat_, T* src, std::size_t size, T* dest){
+	BOOST_FORCEINLINE void batch_matvec4(mat4<T>& mat_, T* src, std::size_t size, T* dest){
 		mat4<T> mat;
 		transpose4(mat_, mat);
 		batch_vecmat4(mat, src, size, dest);
