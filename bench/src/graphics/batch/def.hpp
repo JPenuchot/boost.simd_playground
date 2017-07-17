@@ -124,7 +124,13 @@ static void batch__matvec4__glm (benchmark::State& state){
 
 	while(state.KeepRunning()){
 		for(std::size_t i = 0; i < 4 * N; i+=4){
-			glm::vec4 vec(&vecarr[i]);
+			glm::vec4 vec(0.f);
+
+			vec.x = vecarr[i];
+			vec.y = vecarr[i + 1];
+			vec.z = vecarr[i + 2];
+			vec.w = vecarr[i + 3];
+
 			vec = mat * vec;
 
 			vecarr[i] = vec.x;
@@ -132,7 +138,6 @@ static void batch__matvec4__glm (benchmark::State& state){
 			vecarr[i + 2] = vec.z;
 			vecarr[i + 3] = vec.w;
 		}
-		
 	}
 }
 
@@ -151,7 +156,13 @@ static void batch__vecmat4__glm (benchmark::State& state){
 
 	while(state.KeepRunning()){
 		for(std::size_t i = 0; i < 4 * N; i+=4){
-			glm::vec4 vec(&vecarr[i]);
+			glm::vec4 vec(0.f);
+
+			vec.x = vecarr[i];
+			vec.y = vecarr[i + 1];
+			vec.z = vecarr[i + 2];
+			vec.w = vecarr[i + 3];
+			
 			vec = vec * mat;
 			
 			vecarr[i] = vec.x;
