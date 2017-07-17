@@ -32,7 +32,7 @@ fi
 
 ## Build everything
 
-./build ${CMAKE_BUILD_DIR} ${BIN_DIR}
+./build.sh ${CMAKE_BUILD_DIR} ${BIN_DIR}
 
 ## Run benchmarks
 
