@@ -7,11 +7,14 @@
 #include <boost/simd/function/split.hpp>
 #include <boost/simd/reduction.hpp>
 
+#include "../helper/transpose.hpp"
 #include "../types.hpp"
+#include "matvec.hpp"
 
 namespace pg { namespace graphics {
 	namespace bs = boost::simd;
-	
+	namespace pgg = pg::graphics;
+
 	/**
 	 * @brief      Cumputes a Matrix x Vector product for size 3 operands
 	 *
@@ -49,19 +52,18 @@ namespace pg { namespace graphics {
 	 */
 	template <typename T>
 	BOOST_FORCEINLINE void mult4(const vec4<T>& vec, const mat4<T>& mat, vec4<T>& dest){
-		auto mss0 = bs::slice_low(mat);
-		auto mss1 = bs::slice_high(mat);
+		mat4<T> matt;
 
-		auto ms0 = bs::slice_low(mss0);
-		auto ms1 = bs::slice_high(mss0);
-		auto ms2 = bs::slice_low(mss1);
-		auto ms3 = bs::slice_high(mss1);
+		pgg::transpose4(mat, matt);
+		
+		//auto mss0 = bs::slice_low(mat);
+		//auto mss1 = bs::slice_high(mat);
+		//
+		//auto ms0 = bs::slice_low(mss0);
+		//auto ms1 = bs::slice_high(mss0);
+		//auto ms2 = bs::slice_low(mss1);
+		//auto ms3 = bs::slice_high(mss1);
 
-		dest = bs::pack<T, 4>{
-			bs::dot(vec, ms0),
-			bs::dot(vec, ms1),
-			bs::dot(vec, ms2),
-			bs::dot(vec, ms3)
-		};
+		mult4(matt, vec, dest);
 	}
 }	}

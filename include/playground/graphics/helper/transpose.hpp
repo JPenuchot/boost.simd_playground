@@ -10,20 +10,20 @@
 namespace pg { namespace graphics {
 
 	template <typename T>
-	BOOST_FORCEINLINE void transpose4(mat4<T>& src, mat4<T>& dest){
+	BOOST_FORCEINLINE void transpose4(const mat4<T>& src, mat4<T>& dest){
 		namespace bs = boost::simd;
 
-		//dest = bs::shuffle<
-		//	0, 4, 8, 12,
-		//	1, 5, 9, 13,
-		//	2, 6, 10, 14,
-		//	3, 7, 11, 15
-		//>(src);
+		dest = bs::shuffle<
+			0,	4,	8,	12,
+			1,	5,	9,	13,
+			2,	6,	10,	14,
+			3,	7,	11,	15
+		>(src);
 
-		dest[0] =	src[0];	dest[1] =	src[4];	dest[2] =	src[8];		dest[3] =	src[12]; 
-		dest[4] =	src[1];	dest[5] =	src[5];	dest[6] =	src[9];		dest[7] =	src[13]; 
-		dest[8] =	src[2];	dest[9] =	src[6];	dest[10] =	src[10];	dest[11] =	src[14]; 
-		dest[12] =	src[3];	dest[13] =	src[7];	dest[14] =	src[11];	dest[15] =	src[15]; 
+		//dest[0] =	src[0];	dest[1] =	src[4];	dest[2] =	src[8];		dest[3] =	src[12]; 
+		//dest[4] =	src[1];	dest[5] =	src[5];	dest[6] =	src[9];		dest[7] =	src[13]; 
+		//dest[8] =	src[2];	dest[9] =	src[6];	dest[10] =	src[10];	dest[11] =	src[14]; 
+		//dest[12] =	src[3];	dest[13] =	src[7];	dest[14] =	src[11];	dest[15] =	src[15]; 
 
 		/*
 

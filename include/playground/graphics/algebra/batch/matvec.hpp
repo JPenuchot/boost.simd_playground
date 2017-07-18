@@ -80,7 +80,7 @@ namespace pg { namespace graphics {
 	 * @tparam     T     Type
 	 */
 	template <typename T>
-	BOOST_FORCEINLINE void batch_vecmat4(mat4<T>& mat, T* src, std::size_t size, T* dest){
+	BOOST_FORCEINLINE void batch_vecmat4_(mat4<T>& mat, T* src, std::size_t size, T* dest){
 		auto& a_start = src;
 		auto& b_start = dest;
 
@@ -130,7 +130,7 @@ namespace pg { namespace graphics {
 	 * @tparam     T     Type
 	 */
 	template <typename T>
-	BOOST_FORCEINLINE void batch_vecmat4_(mat4<T>& mat, T* src, std::size_t size, T* dest){
+	BOOST_FORCEINLINE void batch_vecmat4(mat4<T>& mat, T* src, std::size_t size, T* dest){
 		mat4<T> matt;
 		pg::graphics::transpose4(mat, matt);
 		batch_matvec4(matt, src, size, dest);
