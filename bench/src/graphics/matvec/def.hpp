@@ -30,6 +30,10 @@ static void matvec__matvec4__dumb (benchmark::State& state){
 
 	while(state.KeepRunning()){
 		matvec_dumb(mat, vec, vec);
+		matvec_dumb(mat, vec, vec);
+		matvec_dumb(mat, vec, vec);
+		matvec_dumb(mat, vec, vec);
+
 		benchmark::DoNotOptimize(vec);
 	}
 }
@@ -47,6 +51,9 @@ static void matvec__matvec4__simd (benchmark::State& state){
 
 	while(state.KeepRunning()){
 		pgg::mult4(mat, vec, vec);
+		pgg::mult4(mat, vec, vec);
+		pgg::mult4(mat, vec, vec);
+		pgg::mult4(mat, vec, vec);
 		benchmark::DoNotOptimize(vec);
 	}
 }
@@ -63,7 +70,11 @@ static void matvec__matvec4__glm (benchmark::State& state){
 	glm::vec4 vec { T(1), T(2), T(3), T(4) };
 
 	while(state.KeepRunning()){
-		benchmark::DoNotOptimize(vec = vec * mat);
+		vec = mat * vec;
+		vec = mat * vec;
+		vec = mat * vec;
+		vec = mat * vec;
+		benchmark::DoNotOptimize(vec);
 	}
 }
 
