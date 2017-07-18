@@ -43,11 +43,13 @@ namespace pg { namespace graphics {
 		auto B3 = bs::slice_high(B__1);
 		
 		//	Compute compute compute compute...
+		
+		//	TODO : Duplicate B0, B1... ?
 
-		auto res0 = A[0] * B0 + A[1] * B1 + A[2] * B2 + A[3] * B3;
-		auto res1 = A[4] * B0 + A[5] * B1 + A[6] * B2 + A[7] * B3;
-		auto res2 = A[8] * B0 + A[9] * B1 + A[10] * B2 + A[11] * B3;
-		auto res3 = A[12] * B0 + A[13] * B1 + A[14] * B2 + A[15] * B3;
+		auto res0 = A[0]	* B0 + A[1]		* B1 + A[2]		* B2 + A[3]		* B3;
+		auto res1 = A[4]	* B0 + A[5]		* B1 + A[6]		* B2 + A[7]		* B3;
+		auto res2 = A[8]	* B0 + A[9]		* B1 + A[10]	* B2 + A[11]	* B3;
+		auto res3 = A[12]	* B0 + A[13]	* B1 + A[14]	* B2 + A[15]	* B3;
 
 		dest = bs::combine(bs::combine(res0, res1), bs::combine(res2, res3));
 	}
