@@ -74,3 +74,4 @@ cd fast-asm-compare/ext
 ln -s ../../ext/* .
 cd ../
 ln -s ../examples/compare/* .
+ln -s ../include .
