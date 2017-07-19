@@ -21,6 +21,10 @@ namespace pg { namespace graphics {
 		auto a_end = a_start + (16 * size);
 
 		for(; a_start + 32 <= a_end; a_start+=32, b_start+=32){
+			#ifdef FASMCMP
+				IACA_START
+			#endif
+
 			mat4<T> m0(a_start);
 			mat4<T> m1(&a_start[16]);
 
@@ -33,6 +37,10 @@ namespace pg { namespace graphics {
 			bs::store(m0d, b_start);
 			bs::store(m1d, &b_start[16]);
 		}
+
+		#ifdef FASTCMP
+			IACA_END
+		#endif
 
 		for(; a_start + 16 <= a_end; a_start+=16, b_start+=16){
 			mat4<T> m0(a_start);
