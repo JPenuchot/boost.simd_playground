@@ -15,7 +15,7 @@ namespace pg { namespace graphics {
 	namespace bs = boost::simd;
 
 	template <typename T>
-	BOOST_FORCEINLINE void batch3(mat3<T>& mat, vec3<T>* src, std::size_t size, T* dest){
+	BOOST_FORCEINLINE void batch3(mat3<T>& mat, T* src, std::size_t size, T* dest){
 		//	TODO
 	}
 
@@ -41,16 +41,31 @@ namespace pg { namespace graphics {
 		vec4<T> res2;
 		vec4<T> res3;
 
+		//	Split split split split...
+		auto mat_split1 = bs::slice(mat);
+		auto mat_split2_0 = bs::slice(mat_split1[0]);
+		auto mat_split2_1 = bs::slice(mat_split1[1]);
+
+		auto c0 = mat_split2_0[0];
+		auto c1 = mat_split2_0[1];
+		auto c2 = mat_split2_1[0];
+		auto c3 = mat_split2_1[1];
+
 		//	Goin' fast
 		for(;a_start + 16 <= a_end; a_start += 16, b_start += 16){
 			#ifdef FASMCMP
 				IACA_START
 			#endif
 
-			mult4(mat, vec4<T>(a_start), res0);
-			mult4(mat, vec4<T>(&a_start[4]), res1);
-			mult4(mat, vec4<T>(&a_start[8]), res2);
-			mult4(mat, vec4<T>(&a_start[12]), res3);
+			vec4<T> vec0(a_start);
+			vec4<T> vec1(&a_start[4]);
+			vec4<T> vec2(&a_start[8]);
+			vec4<T> vec3(&a_start[12]);
+
+			auto res0 = (c0 * vec0[0]) + (c1 * vec0[1]) + (c2 * vec0[2]) + (c3 * vec0[3]);
+			auto res1 = (c0 * vec1[0]) + (c1 * vec1[1]) + (c2 * vec1[2]) + (c3 * vec1[3]);
+			auto res2 = (c0 * vec2[0]) + (c1 * vec2[1]) + (c2 * vec2[2]) + (c3 * vec2[3]);
+			auto res3 = (c0 * vec3[0]) + (c1 * vec3[1]) + (c2 * vec3[2]) + (c3 * vec3[3]);
 
 			bs::store(res0, b_start);
 			bs::store(res1, &b_start[4]);
