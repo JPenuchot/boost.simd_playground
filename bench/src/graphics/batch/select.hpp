@@ -8,7 +8,8 @@
 	BENCHMARK_TEMPLATE(batch__matvec4__simd, type, size); \
 	BENCHMARK_TEMPLATE(batch__vecmat4__simd, type, size); \
 	BENCHMARK_TEMPLATE(batch__matvec4__glm, type, size); \
-	BENCHMARK_TEMPLATE(batch__vecmat4__glm, type, size);
+	BENCHMARK_TEMPLATE(batch__vecmat4__glm, type, size); \
+	BENCHMARK_TEMPLATE(batch__matmat4__simd, type, size);
 	
 	//BENCHMARK_TEMPLATE(batch__matvec4__dumb, type, size);
 	//BENCHMARK_TEMPLATE(batch__vecmat4__dumb, type, size);
