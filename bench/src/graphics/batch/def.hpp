@@ -318,7 +318,36 @@ static void batch__matmat4__glm (benchmark::State& state){
 	std::iota(matlist.begin(), matlist.end(), T(0));
 
 	while(state.KeepRunning()){
-		//	TODO
+		T* arr_beg = matlist.data();
+		T* arr_end = matlist.data() + matlist.size();
+
+		for(; arr_beg + 16 <= arr_end; arr_beg+=16){
+			glm::mat4 mat_{
+				arr_beg[0], arr_beg[1], arr_beg[2], arr_beg[3],
+				arr_beg[4], arr_beg[5], arr_beg[6], arr_beg[7],
+				arr_beg[8], arr_beg[9], arr_beg[10], arr_beg[11],
+				arr_beg[12], arr_beg[13], arr_beg[14], arr_beg[15]
+			};
+
+			mat_ *= mat;
+
+			arr_beg[0]	= mat_[0][0];
+			arr_beg[1]	= mat_[0][1];
+			arr_beg[2]	= mat_[0][2];
+			arr_beg[3]	= mat_[0][3];
+			arr_beg[4]	= mat_[1][0];
+			arr_beg[5]	= mat_[1][1];
+			arr_beg[6]	= mat_[1][2];
+			arr_beg[7]	= mat_[1][3];
+			arr_beg[8]	= mat_[2][0];
+			arr_beg[9]	= mat_[2][1];
+			arr_beg[10]	= mat_[2][2];
+			arr_beg[11]	= mat_[2][3];
+			arr_beg[12]	= mat_[3][0];
+			arr_beg[13]	= mat_[3][1];
+			arr_beg[14]	= mat_[3][2];
+			arr_beg[15] = mat_[3][3];
+		}
 	}
 	benchmark::DoNotOptimize(matlist);
 }
