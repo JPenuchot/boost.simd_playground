@@ -33,8 +33,8 @@ static void vecmat__vecmat4__dumb (benchmark::State& state){
 		vecmat_dumb(vec, mat, vec);
 		vecmat_dumb(vec, mat, vec);
 		vecmat_dumb(vec, mat, vec);
-		benchmark::DoNotOptimize(vec);
 	}
+	benchmark::DoNotOptimize(vec);
 }
 
 template <typename T>
@@ -53,8 +53,8 @@ static void vecmat__vecmat4__simd (benchmark::State& state){
 		pgg::mult4(vec, mat, vec);
 		pgg::mult4(vec, mat, vec);
 		pgg::mult4(vec, mat, vec);
-		benchmark::DoNotOptimize(vec);
 	}
+	benchmark::DoNotOptimize(vec);
 }
 
 template <typename T>
@@ -73,9 +73,8 @@ static void vecmat__vecmat4__glm (benchmark::State& state){
 		vec = vec * mat;
 		vec = vec * mat;
 		vec = vec * mat;
-
-		benchmark::DoNotOptimize(vec);
 	}
+	benchmark::DoNotOptimize(vec);
 }
 
 template <typename T>

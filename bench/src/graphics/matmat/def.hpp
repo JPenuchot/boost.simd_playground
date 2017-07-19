@@ -37,8 +37,8 @@ static void matvec__matmat4__simd (benchmark::State& state){
 		pgg::mult4(mat, matt, mat);
 		pgg::mult4(mat, matt, mat);
 		pgg::mult4(mat, matt, mat);
-		benchmark::DoNotOptimize(mat);
 	}
+	benchmark::DoNotOptimize(mat);
 }
 
 template <typename T>
@@ -57,6 +57,6 @@ static void matvec__matmat4__glm (benchmark::State& state){
 		mat *= matt;
 		mat *= matt;
 		mat *= matt;
-		benchmark::DoNotOptimize(mat);
 	}
+	benchmark::DoNotOptimize(mat);
 }
