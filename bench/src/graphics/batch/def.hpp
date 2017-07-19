@@ -304,3 +304,21 @@ static void batch__vecmat4__glm (benchmark::State& state){
 
 	}
 }
+
+template <typename T, std::size_t N>
+static void batch__matmat4__glm (benchmark::State& state){
+	glm::mat4 mat {
+		T(1), T(2), T(3), T(4),
+		T(5), T(6), T(7), T(8),
+		T(9), T(10), T(11), T(12),
+		T(13), T(14), T(15), T(16)
+	};	
+
+	std::array<T, N * 16> matlist;
+	std::iota(matlist.begin(), matlist.end(), T(0));
+
+	while(state.KeepRunning()){
+		//	TODO
+	}
+	benchmark::DoNotOptimize(matlist);
+}
