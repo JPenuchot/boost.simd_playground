@@ -12,7 +12,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 --std=c++14 -DNDEBUG -mfma")
 
 #	List of SIMD architectures
 set(BENCH_ARCHS
-	"avx"
+	"avx2"
 	"sse4.2"
 )
 
@@ -25,6 +25,7 @@ include_directories(
 	"../ext/OpenBLAS/include"
 	"../ext/glm"
 	"../include"
+	"~/intel/mkl/include"
 )
 
 #	Linking libraries
@@ -32,6 +33,7 @@ include_directories(
 link_directories(
 	"/usr/local/lib"
 	"../ext/OpenBLAS/lib"
+	"~/intel/mkl/lib/intel64"
 )
 link_libraries(
 	"benchmark"
