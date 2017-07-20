@@ -3,7 +3,10 @@
 #include <benchmark/benchmark.h>
 
 #include <array>
+#include <vector>
 #include <numeric>
+
+#include <boost/simd/memory/allocator.hpp>
 
 #include <playground/graphics/mat4x4.hpp>
 #include <playground/graphics/mat3x3.hpp>
@@ -32,7 +35,7 @@ static void batch__matvec4__dumb (benchmark::State& state){
 		T(13), T(14), T(15), T(16)
 	};
 
-	std::array<T, 4 * N> vecarr;
+	std::vector<T, boost::simd::allocator<T>> vecarr(N * 4);
 	std::iota(vecarr.begin(), vecarr.end(), T(0));
 	std::array<T, 4> vec;
 
@@ -55,7 +58,7 @@ static void batch__vecmat4__dumb (benchmark::State& state){
 		T(13), T(14), T(15), T(16)
 	};
 
-	std::array<T, 4 * N> vecarr;
+	std::vector<T, boost::simd::allocator<T>> vecarr(N * 4);
 	std::iota(vecarr.begin(), vecarr.end(), T(0));
 	std::array<T, 4> vec;
 
@@ -80,7 +83,7 @@ static void batch__matvec4__simd (benchmark::State& state){
 		T(13), T(14), T(15), T(16)
 	};
 
-	std::array<T, 4 * N> vec;
+	std::vector<T, boost::simd::allocator<T>> vec(N * 4);
 	std::iota(vec.begin(), vec.end(), T(0));
 
 	while(state.KeepRunning()){
@@ -99,7 +102,7 @@ static void batch__vecmat4__simd (benchmark::State& state){
 		T(13), T(14), T(15), T(16)
 	};
 
-	std::array<T, 4 * N> vec;
+	std::vector<T, boost::simd::allocator<T>> vec(N * 4);
 	std::iota(vec.begin(), vec.end(), T(0));
 
 	while(state.KeepRunning()){
@@ -117,7 +120,7 @@ static void batch__matmat4__simd (benchmark::State& state){
 		T(13), T(14), T(15), T(16)
 	};	
 
-	std::array<T, N * 16> matlist;
+	std::vector<T, boost::simd::allocator<T>> matlist(N * 16);
 	std::iota(matlist.begin(), matlist.end(), T(0));
 
 	while(state.KeepRunning()){
@@ -138,7 +141,7 @@ static void batch__matvec4__glm (benchmark::State& state){
 		T(13), T(14), T(15), T(16)
 	};
 
-	std::array<T, 4 * N> vecarr;
+	std::vector<T, boost::simd::allocator<T>> vecarr(N * 4);
 	std::iota(vecarr.begin(), vecarr.end(), T(0));
 
 	while(state.KeepRunning()){
@@ -226,7 +229,7 @@ static void batch__vecmat4__glm (benchmark::State& state){
 		T(13), T(14), T(15), T(16)
 	};
 
-	std::array<T, 4 * N> vecarr;
+	std::vector<T, boost::simd::allocator<T>> vecarr(N * 4);
 	std::iota(vecarr.begin(), vecarr.end(), T(0));
 
 	while(state.KeepRunning()){
@@ -314,7 +317,7 @@ static void batch__matmat4__glm (benchmark::State& state){
 		T(13), T(14), T(15), T(16)
 	};	
 
-	std::array<T, N * 16> matlist;
+	std::vector<T, boost::simd::allocator<T>> matlist(N * 16);
 	std::iota(matlist.begin(), matlist.end(), T(0));
 
 	while(state.KeepRunning()){
