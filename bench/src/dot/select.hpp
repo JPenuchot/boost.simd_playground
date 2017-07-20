@@ -1,7 +1,8 @@
 #pragma once
 
 #include "playground/select.hpp"
-#include "openblas/select.hpp"
+//#include "openblas/select.hpp"
+#include "mkl/select.hpp"
 
 /*
  *	BENCHMARK SIZES
@@ -20,9 +21,11 @@
 
 #define BM_DOT_SIZE(type, size) \
 	BM_DOT_JPENUCHOT(type, size) \
-	BM_DOT_BLAS(type, size)
+	BM_DOT_MKL(type, size)
+	
+	//BM_DOT_OPENBLAS(type, size)
 
-#define BM_DOT() \
+#define BM_DOT \
 	BM_DOT_SIZE(double, 2) \
 	BM_DOT_SIZE(double, 256) \
 	BM_DOT_SIZE(double, 1024) \
