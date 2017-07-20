@@ -16,6 +16,10 @@
 	//BENCHMARK_TEMPLATE(batch__vecmat4__dumb, type, size);
 
 #define BM_BATCH(type) \
+	BM_BATCH_SIZE(type, 1) \
+	BM_BATCH_SIZE(type, 4) \
+	BM_BATCH_SIZE(type, 16) \
+	BM_BATCH_SIZE(type, 256) \
 	BM_BATCH_SIZE(type, 1024) \
 	BM_BATCH_SIZE(type, 4096) \
 	BM_BATCH_SIZE(type, 16384) \
